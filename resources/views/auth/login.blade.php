@@ -1,7 +1,11 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+			
+                <!-- Logo -->
+                    <a href="{{ route('dashboard') }}">
+						<img src="http://alejet-jllky.run-eu-central1.goorm.io/img/372127.svg" style="width:15%; margin:0 auto;">
+                    </a>
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />

@@ -1,0 +1,1 @@
+<img src="http://alejet-jllky.run-eu-central1.goorm.io/img/372127.svg" style="width:10%;">
