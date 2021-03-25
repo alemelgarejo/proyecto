@@ -41,5 +41,5 @@ Route::resource('dashboard/mispropietarios', MipropietarioController::class);
 Route::resource('dashboard/mispropiedades', MipropiedadeController::class);
 
 Route::get('home', function(){
-    return view('vista-cliente.layout');
+    return view('vista-cliente.index');
 });
