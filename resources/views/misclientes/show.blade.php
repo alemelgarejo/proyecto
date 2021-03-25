@@ -130,7 +130,11 @@
                     <h6 class="mb-0">Encargado</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                    {{ $miscliente->user->surname }}, {{$miscliente->user->name}}
+                    @if($miscliente->user==null)
+                        Usuario inexistente
+                    @else
+                        {{$miscliente->user->surname}}, {{ $miscliente->user->name }}
+                    @endif
                   </div>
                 </div>
                 <hr>

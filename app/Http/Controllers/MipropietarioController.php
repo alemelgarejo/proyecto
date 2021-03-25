@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePropietarioRequest;
+use App\Http\Requests\UpdateMisPropietarioRequest;
 use App\Http\Requests\UpdatePropietarioRequest;
 use App\Models\Propietario;
 use App\Models\User;
@@ -71,7 +72,7 @@ class MipropietarioController extends Controller
      * @param  \App\Models\Propietario  $propietario
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePropietarioRequest $request, Propietario $mispropietario)
+    public function update(UpdateMisPropietarioRequest $request, Propietario $mispropietario)
     {
         $mispropietario->update($request->validated());
         return redirect('dashboard/mispropietarios')->with('status', 'Propietario actualizado con éxito.');

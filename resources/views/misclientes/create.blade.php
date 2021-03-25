@@ -19,7 +19,7 @@
         {{-- Nombre --}}
         <div class="mb-4">
             <label for="name" class="form-label">Nombre</label>
-            <input name="name" type="text" class="form-control" id="name" aria-describedby="name"
+            <input name="name" type="text" placeholder="Nombre" class="form-control" id="name" aria-describedby="name"
                 value="{{ old('name', $miscliente->name) }}">
             @error('name')
                 <small class="text-danger">{{ $message }}</small>
@@ -29,7 +29,7 @@
         {{-- Apellidos --}}
         <div class="mb-4">
             <label for="surname" class="form-label">Apellidos</label>
-            <input name="surname" type="text" class="form-control" id="surname" aria-describedby="surname"
+            <input name="surname" type="text" placeholder="Apellidos"  class="form-control" id="surname" aria-describedby="surname"
                 value="{{ old('surname', $miscliente->surname) }}">
             @error('surname')
                 <small class="text-danger">{{ $message }}</small>
@@ -48,7 +48,7 @@
                         {{ $name }}</option>
                 @endforeach
             </select>
-            @error('surname')
+            @error('user_id')
                 <small class="text-danger">{{ $message }}</small>
             @enderror
         </div>
@@ -56,7 +56,7 @@
         {{-- Email --}}
         <div class="mb-4">
             <label for="email" class="form-label">Email</label>
-            <input name="email" type="email" class="form-control" id="email" aria-describedby="email"
+            <input name="email" placeholder="Email"  type="email" class="form-control" id="email" aria-describedby="email"
                 value="{{ old('email', $miscliente->email) }}">
             @error('email')
                 <small class="text-danger">{{ $message }}</small>
@@ -66,7 +66,7 @@
         {{-- Teléfono --}}
         <div class="mb-4">
             <label for="telefono" class="form-label">Teléfono</label>
-            <input name="telefono" type="text" class="form-control" id="telefono" aria-describedby="telefono"
+            <input name="telefono" type="text" placeholder="Telefono"  class="form-control" id="telefono" aria-describedby="telefono"
                 value="{{ old('telefono', $miscliente->telefono) }}">
             @error('telefono')
                 <small class="text-danger">{{ $message }}</small>
@@ -76,7 +76,7 @@
         {{-- DNI --}}
         <div class="mb-4">
             <label for="dni" class="form-label">DNI</label>
-            <input name="dni" type="text" class="form-control" id="dni" aria-describedby="dni"
+            <input name="dni" type="text" placeholder="DNI"  class="form-control" id="dni" aria-describedby="dni"
                 value="{{ old('dni', $miscliente->dni) }}">
             @error('dni')
                 <small class="text-danger">{{ $message }}</small>
@@ -108,7 +108,7 @@
         {{-- Direccion --}}
         <div class="mb-4">
             <label for="direccion" class="form-label">Dirección</label>
-            <input name="direccion" type="text" class="form-control" id="direccion" aria-describedby="direccion"
+            <input name="direccion" placeholder="Dirección"  type="text" class="form-control" id="direccion" aria-describedby="direccion"
                 value="{{ old('direccion', $miscliente->direccion) }}">
             @error('direccion')
                 <small class="text-danger">{{ $message }}</small>
@@ -118,7 +118,7 @@
         {{-- Ciudad --}}
         <div class="mb-4">
             <label for="ciudad" class="form-label">Ciudad</label>
-            <input name="ciudad" type="text" class="form-control" id="ciudad" aria-describedby="ciudad"
+            <input name="ciudad" type="text" placeholder="Ciudad" class="form-control" id="ciudad" aria-describedby="ciudad"
                 value="{{ old('ciudad', $miscliente->ciudad) }}">
             @error('ciudad')
                 <small class="text-danger">{{ $message }}</small>
@@ -128,7 +128,7 @@
         {{-- Provincia --}}
         <div class="mb-4">
             <label for="provincia" class="form-label">Provincia</label>
-            <input name="provincia" type="text" class="form-control" id="provincia" aria-describedby="provincia"
+            <input name="provincia" type="text" placeholder="Provincia"  class="form-control" id="provincia" aria-describedby="provincia"
                 value="{{ old('provincia', $miscliente->provincia) }}">
             @error('provincia')
                 <small class="text-danger">{{ $message }}</small>
@@ -138,7 +138,7 @@
         {{-- Observaciones --}}
         <div class="mb-4">
             <label for="observaciones" class="form-label">Observaciones</label>
-            <textarea name="observaciones" type="text" class="form-control" id="observaciones"
+            <textarea name="observaciones" type="text" placeholder="Observaciones"  class="form-control" id="observaciones"
                 aria-describedby="observaciones"
                 value="{{ old('observaciones', $miscliente->observaciones) }}">{{ old('observaciones', $miscliente->observaciones) }}</textarea>
             @error('observaciones')

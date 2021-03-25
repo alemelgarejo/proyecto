@@ -22,7 +22,11 @@
                 <div class="d-flex flex-column align-items-center text-center">
                   <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
                   <div class="mt-3">
-                    <h4>Pertenece a : {{$ordene->cliente->surname}}, {{$ordene->cliente->name}}</h4>
+                    <h4>Pertenece a : @if($ordene->cliente==null)
+                        Cliente inexistente
+                    @elseif ($ordene->cliente)
+                        {{ $ordene->cliente->surname }}, {{ $ordene->cliente->name }}
+                    @endif</h4>
                     <p class="text-secondary mb-1">{{ $ordene->ciudad }}</p>
                   </div>
                 </div>

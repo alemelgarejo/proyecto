@@ -693,13 +693,20 @@
         {{-- Estado de conservación --}}
         <div class="mb-4">
             <label for="estado_conservacion" class="form-label">Estado de conservación</label>
-            <input name="estado_conservacion" type="text" class="form-control" placeholder="Estado de conservación"  id="estado_conservacion"
-                aria-describedby="estado_conservacion"
-                value="{{ old('estado_conservacion', $propiedade->estado_conservacion) }}">
+            <select name="estado_conservacion" placeholder="Estado de Conservacion" id="estado_conservacion" class="form-control" value="{{ old('estado_conservacion', $propiedade->estado_conservacion) }}">
+                <option value="1">Estado de conservación</option>
+                <option value="Perfecto">Perfecto</option>
+                <option value="Muy bueno">Muy bueno</option>
+                <option value="Bueno">Bueno</option>
+                <option value="Antigüo">Antigüo</option>
+                <option value="Necesita arreglos">Necesita arreglos</option>
+                <option value="Malo">Malo</option>
+            </select>
             @error('estado_conservacion')
                 <small class="text-danger">{{ $message }}</small>
             @enderror
         </div>
+    <hr>
 
         <div class="form-row">
             {{-- Latitud --}}

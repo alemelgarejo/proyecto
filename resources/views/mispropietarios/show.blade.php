@@ -23,7 +23,11 @@
                 <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
                 <div class="mt-3">
                   <h4>{{ $mispropietario->surname }}, {{$mispropietario->name}}</h4>
-                  <p class="text-secondary mb-1">Asesorado por: {{$mispropietario->user->surname}}, {{$mispropietario->user->name}}</p>
+                  <p class="text-secondary mb-1">Asesorado por: @if($mispropietario->user==null)
+                    Usuario inexistente
+                @else
+                    {{ $mispropietario->user->surname }}, {{ $mispropietario->user->name }}
+                @endif</p>
                 </div>
               </div>
             </div>

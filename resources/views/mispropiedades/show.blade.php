@@ -23,7 +23,11 @@
                   <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
                   <div class="mt-3">
                     <h4>{{ $mispropiedade->direccion }}, {{ $mispropiedade->ciudad }}, {{ $mispropiedade->provincia }}</h4>
-                    <p class="text-secondary mb-1">Pertenece a por: {{$mispropiedade->propietario->surname}}, {{$mispropiedade->propietario->name}}</p>
+                    <p class="text-secondary mb-1">Pertenece a por: @if($mispropiedade->propietario==null)
+                        Propietario inexistente
+                    @else
+                        {{ $mispropiedade->propietario->surname }}, {{ $mispropiedade->propietario->name }}
+                    @endif</p>
                   </div>
                 </div>
               </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePropiedadeRequest;
+use App\Http\Requests\UpdatePropiedadeRequest;
 use App\Models\Propiedade;
 use App\Models\Propietario;
 use Illuminate\Http\Request;
@@ -74,7 +75,7 @@ class PropiedadeController extends Controller
      * @param  \App\Models\Propiedade  $Propiedade
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Propiedade $propiedade)
+    public function update(UpdatePropiedadeRequest $request, Propiedade $propiedade)
     {
         $propiedade->update($request->all());
         return redirect('dashboard/propiedades')->with('status', 'Propiedad actualizada con éxito.');
