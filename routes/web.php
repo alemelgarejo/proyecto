@@ -41,9 +41,8 @@ Route::resource('dashboard/ordenes', OrdeneController::class)->middleware('check
 Route::resource('dashboard/mispropietarios', MipropietarioController::class);
 Route::resource('dashboard/mispropiedades', MipropiedadeController::class);
 
-Route::get('home', function(){
-    return view('vista-cliente.index');
-})->name('vista.index');
+Route::get('home', [WebController::class, 'index'])->name('vista.index');
+Route::post('home', [WebController::class, 'storeMessage'])->name('vista.storeMessage');
 Route::get('home/propiedades', [WebController::class, 'propiedades'])->name('vista.propiedades');
 Route::get('home/agentes', [WebController::class, 'agentes'])->name('vista.agentes');
 Route::get('home/contacto', function(){

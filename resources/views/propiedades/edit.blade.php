@@ -37,9 +37,9 @@
         <div class="mb-4">
             <label for="estado" class="form-label">Estado</label>
             <select name="estado" placeholder="Estado"   id="estado" class="form-control" value="{{ old('estado', $propiedade->estado) }}">
-                <option value="Activo">Activo</option>
-                <option value="Inactivo">Inactivo</option>
-                <option value="Vendida">Vendida</option>
+                <option value="Activo" {{ $propiedade->estado == 'Activo' ? 'selected' : '' }}>Activo</option>
+                <option value="Inactivo" {{ $propiedade->estado == 'Inactivo' ? 'selected' : '' }}>Inactivo</option>
+                <option value="Vendida" {{ $propiedade->estado == 'Vendida' ? 'selected' : '' }}>Vendida</option>
             </select>
             @error('estado')
                 <small class="text-danger">{{ $message }}</small>
@@ -60,27 +60,27 @@
         <div class="mb-4">
             <label for="tipo" class="form-label">Tipo de propiedad</label>
             <select name="tipo" placeholder="Tipo de propiedad" id="tipo" class="form-control" value="{{ old('tipo', $propiedade->tipo) }}">
-                <option value="1">Tipo de propiedad</option>
-                <option value="Casa terrera">Casa terrera</option>
-                <option value="Piso">Piso</option>
-                <option value="Estudio">Estudio</option>
-                <option value="Local">Local</option>
-                <option value="Nave">Nave</option>
-                <option value="Negocio">Negocio</option>
+                <option value="1" {{ $propiedade->tipo == '1' ? 'selected' : '' }}>Tipo de propiedad</option>
+                <option value="Casa terrera" {{ $propiedade->tipo == 'Casa terrera' ? 'selected' : '' }}>Casa terrera</option>
+                <option value="Piso" {{ $propiedade->tipo == 'Piso' ? 'selected' : '' }}>Piso</option>
+                <option value="Estudio" {{ $propiedade->tipo == 'Estudio' ? 'selected' : '' }}>Estudio</option>
+                <option value="Local" {{ $propiedade->tipo == 'Local' ? 'selected' : '' }}>Local</option>
+                <option value="Nave" {{ $propiedade->tipo == 'Nave' ? 'selected' : '' }}>Nave</option>
+                <option value="Negocio" {{ $propiedade->tipo == 'Negocio' ? 'selected' : '' }}>Negocio</option>
             </select>
             @error('tipo')
                 <small class="text-danger">{{ $message }}</small>
             @enderror
         </div>
-		
+
 		{{-- Tipo de interes --}}
         <div class="mb-4">
             <label for="tipo_interes" class="form-label">¿Qué desea hacer con su propiedad?</label>
             <select name="tipo_interes" placeholder="¿Qué desea hacer con su propiedad?" id="tipo" class="form-control" value="{{ old('tipo_interes', $propiedade->tipo_interes) }}">
-                <option value="1">¿Qué desea hacer con su propiedad?</option>
-                <option value="Venta">Venta</option>
-                <option value="Alquiler">Alquiler</option>
-                <option value="Traspaso">Traspaso</option>
+                <option value="1" {{ $propiedade->tipo_interes == '1' ? 'selected' : '' }}>¿Qué desea hacer con su propiedad?</option>
+                <option value="Venta" {{ $propiedade->tipo_interes == 'Venta' ? 'selected' : '' }}>Venta</option>
+                <option value="Alquiler" {{ $propiedade->tipo_interes == 'Alquiler' ? 'selected' : '' }}>Alquiler</option>
+                <option value="Traspaso" {{ $propiedade->tipo_interes == 'Traspaso' ? 'selected' : '' }}>Traspaso</option>
             </select>
             @error('tipo')
                 <small class="text-danger">{{ $message }}</small>
@@ -715,13 +715,13 @@
         <div class="mb-4">
             <label for="estado_conservacion" class="form-label">Estado de conservación</label>
             <select name="estado_conservacion" placeholder="Estado de Conservacion" id="estado_conservacion" class="form-control" value="{{ old('estado_conservacion', $propiedade->estado_conservacion) }}">
-                <option value="1">Estado de conservación</option>
-                <option value="Perfecto">Perfecto</option>
-                <option value="Muy bueno">Muy bueno</option>
-                <option value="Bueno">Bueno</option>
-                <option value="Antigüo">Antigüo</option>
-                <option value="Necesita arreglos">Necesita arreglos</option>
-                <option value="Malo">Malo</option>
+                <option value="1" {{ $propiedade->estado_conservacion == '1' ? 'selected' : '' }}>Estado de conservación</option>
+                <option value="Perfecto" {{ $propiedade->estado_conservacion == 'Perfecto' ? 'selected' : '' }}>Perfecto</option>
+                <option value="Muy bueno" {{ $propiedade->estado_conservacion == 'Muy bueno' ? 'selected' : '' }}>Muy bueno</option>
+                <option value="Bueno" {{ $propiedade->estado_conservacion == 'Bueno' ? 'selected' : '' }}>Bueno</option>
+                <option value="Antiguo" {{ $propiedade->estado_conservacion == 'Antiguo' ? 'selected' : '' }}>Antigüo</option>
+                <option value="Necesita arreglos" {{ $propiedade->estado_conservacion == 'Necesita arreglos' ? 'selected' : '' }}>Necesita arreglos</option>
+                <option value="Malo" {{ $propiedade->estado_conservacion == 'Malo' ? 'selected' : '' }}>Malo</option>
             </select>
             @error('estado_conservacion')
                 <small class="text-danger">{{ $message }}</small>

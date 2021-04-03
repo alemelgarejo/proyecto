@@ -35,8 +35,8 @@
         <div class="mb-4">
             <label for="estado" placeholder="Estado"  class="form-label">Estado</label>
             <select name="estado" id="estado" class="form-control" value="{{ old('estado', $mispropiedade->estado) }}">
-                <option value="Activo">Activo</option>
-                <option value="Inactivo">Inactivo</option>
+                <option value="Activo" {{ $mispropiedade->estado == 'Activo' ? 'selected' : '' }}>Activo</option>
+                <option value="Inactivo" {{ $mispropiedade->estado == 'Inactivo' ? 'selected' : '' }}>Inactivo</option>
             </select>
             @error('estado')
                 <small class="text-danger">{{ $message }}</small>
@@ -57,29 +57,29 @@
         <div class="mb-4">
             <label for="tipo" class="form-label">Tipo de propiedad</label>
             <select name="tipo" placeholder="Tipo de propiedad" id="tipo" class="form-control" value="{{ old('tipo', $mispropiedade->tipo) }}">
-                <option value="1">Tipo de propiedad</option>
-                <option value="Casa terrera">Casa terrera</option>
-                <option value="Piso">Piso</option>
-                <option value="Estudio">Estudio</option>
-                <option value="Local">Local</option>
-                <option value="Nave">Nave</option>
-                <option value="Negocio">Negocio</option>
+                <option value="1" {{ $mispropiedade->tipo == '1' ? 'selected' : '' }}>Tipo de propiedad</option>
+                <option value="Casa terrera" {{ $mispropiedade->tipo == 'Casa terrera' ? 'selected' : '' }}>Casa terrera</option>
+                <option value="Piso" {{ $mispropiedade->tipo == 'Piso' ? 'selected' : '' }}>Piso</option>
+                <option value="Estudio" {{ $mispropiedade->tipo == 'Estudio' ? 'selected' : '' }}>Estudio</option>
+                <option value="Local" {{ $mispropiedade->tipo == 'Local' ? 'selected' : '' }}>Local</option>
+                <option value="Nave" {{ $mispropiedade->tipo == 'Nave' ? 'selected' : '' }}>Nave</option>
+                <option value="Negocio" {{ $mispropiedade->tipo == 'Negocio' ? 'selected' : '' }}>Negocio</option>
             </select>
             @error('tipo')
                 <small class="text-danger">{{ $message }}</small>
             @enderror
         </div>
-		
+
 		{{-- Tipo de interes --}}
         <div class="mb-4">
             <label for="tipo_interes" class="form-label">¿Qué desea hacer con su propiedad?</label>
             <select name="tipo_interes" placeholder="¿Qué desea hacer con su propiedad?" id="tipo" class="form-control" value="{{ old('tipo_interes', $mispropiedade->tipo_interes) }}">
-                <option value="1">¿Qué desea hacer con su propiedad?</option>
-                <option value="Venta">Venta</option>
-                <option value="Alquiler">Alquiler</option>
-                <option value="Traspaso">Traspaso</option>
+                <option value="1" {{ $mispropiedade->tipo_interes == '1' ? 'selected' : '' }}>¿Qué desea hacer con su propiedad?</option>
+                <option value="Venta" {{ $mispropiedade->tipo_interes == 'Venta' ? 'selected' : '' }}>Venta</option>
+                <option value="Alquiler" {{ $mispropiedade->tipo_interes == 'Alquiler' ? 'selected' : '' }}>Alquiler</option>
+                <option value="Traspaso" {{ $mispropiedade->tipo_interes == 'Traspaso' ? 'selected' : '' }}>Traspaso</option>
             </select>
-            @error('tipo')
+            @error('tipo_interes')
                 <small class="text-danger">{{ $message }}</small>
             @enderror
         </div>

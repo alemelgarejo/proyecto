@@ -54,10 +54,10 @@
     <div class="mb-4">
         <label for="tipo_orden" class="form-label">Tipo de órden</label>
         <select name="tipo_orden" placeholder="Tipo de órden" id="tipo_orden" class="form-control" value="{{ old('tipo_orden', $ordene->tipo_orden) }}">
-            <option value="1">Tipo de órden</option>
-            <option value="Traspaso">Traspaso</option>
-            <option value="Compra">Compra</option>
-            <option value="Alquiler">Alquiler</option>
+            <option value="1" {{ $ordene->tipo_orden == '1' ? 'selected' : '' }}>Tipo de órden</option>
+            <option value="Traspaso" {{ $ordene->tipo_orden == 'Traspaso' ? 'selected' : '' }}>Traspaso</option>
+            <option value="Compra" {{ $ordene->tipo_orden == 'Compra' ? 'selected' : '' }}>Compra</option>
+            <option value="Alquiler" {{ $ordene->tipo_orden == 'Alquiler' ? 'selected' : '' }}>Alquiler</option>
         </select>
         @error('tipo_orden')
             <small class="text-danger">{{ $message }}</small>
@@ -68,13 +68,13 @@
     <div class="mb-4">
         <label for="tipo_propiedad" class="form-label">Tipo de propiedad</label>
         <select name="tipo_propiedad" placeholder="Tipo de propiedad" id="tipo_propiedad" class="form-control" value="{{ old('tipo_propiedad', $ordene->tipo_propiedad) }}">
-            <option value="1">Tipo de propiedad</option>
-            <option value="Casa terrera">Casa terrera</option>
-            <option value="Piso">Piso</option>
-            <option value="Estudio">Estudio</option>
-            <option value="Local">Local</option>
-            <option value="Nave">Nave</option>
-            <option value="Negocio">Negocio</option>
+            <option value="1" {{ $ordene->tipo_propiedad == '1' ? 'selected' : '' }}>Tipo de propiedad</option>
+            <option value="Casa terrera" {{ $ordene->tipo_propiedad == 'Casa terrera' ? 'selected' : '' }}>Casa terrera</option>
+            <option value="Piso" {{ $ordene->tipo_propiedad == 'Piso' ? 'selected' : '' }}>Piso</option>
+            <option value="Estudio" {{ $ordene->tipo_propiedad == 'Estudio' ? 'selected' : '' }}>Estudio</option>
+            <option value="Local" {{ $ordene->tipo_propiedad == 'Local' ? 'selected' : '' }}>Local</option>
+            <option value="Nave" {{ $ordene->tipo_propiedad == 'Nave' ? 'selected' : '' }}>Nave</option>
+            <option value="Negocio" {{ $ordene->tipo_propiedad == 'Negocio' ? 'selected' : '' }}>Negocio</option>
         </select>
         @error('tipo_propiedad')
             <small class="text-danger">{{ $message }}</small>
@@ -375,13 +375,13 @@
     <div class="mb-4">
         <label for="situacion" class="form-label">Situación</label>
         <select name="situacion" id="situacion" class="form-control" value="{{ old('situacion', $ordene->situacion) }}">
-            <option value="1">Situación</option>
-            <option value="Primera linea de playa">Primera línea de playa</option>
-            <option value="En la costa">En la costa</option>
-            <option value="En el centro de la poblacion">En el centro de la población</option>
-            <option value="En el campo">En el campo</option>
-            <option value="En zona industrial">En zona industrial</option>
-            <option value="Afueras de la poblacion">Afueras de la población</option>
+            <option value="1" {{ $ordene->situacion == '1' ? 'selected' : '' }}>Situación</option>
+            <option value="Primera linea de playa" {{ $ordene->situacion == 'Primera linea de playa' ? 'selected' : '' }}>Primera línea de playa</option>
+            <option value="En la costa" {{ $ordene->situacion == 'En la costa' ? 'selected' : '' }}>En la costa</option>
+            <option value="En el centro de la poblacion" {{ $ordene->situacion == 'En el centro de la poblacion' ? 'selected' : '' }}>En el centro de la población</option>
+            <option value="En el campo" {{ $ordene->situacion == 'En el campo' ? 'selected' : '' }}>En el campo</option>
+            <option value="En zona industrial" {{ $ordene->situacion == 'En zona industrial' ? 'selected' : '' }}>En zona industrial</option>
+            <option value="Afueras de la poblacion" {{ $ordene->situacion == 'Afueras de la poblacion' ? 'selected' : '' }}>Afueras de la población</option>
         </select>
         @error('situacion')
             <small class="text-danger">{{ $message }}</small>
@@ -393,13 +393,13 @@
     <div class="mb-4">
         <label for="estado_conservacion" class="form-label">Estado de conservación</label>
         <select name="estado_conservacion" placeholder="Estado de Conservacion" id="estado_conservacion" class="form-control" value="{{ old('estado_conservacion', $ordene->estado_conservacion) }}">
-            <option value="1">Estado de conservación</option>
-            <option value="Perfecto">Perfecto</option>
-            <option value="Muy bueno">Muy bueno</option>
-            <option value="Bueno">Bueno</option>
-            <option value="Antigüo">Antigüo</option>
-            <option value="Necesita arreglos">Necesita arreglos</option>
-            <option value="Malo">Malo</option>
+            <option value="1" {{ $ordene->estado_conservacion == '1' ? 'selected' : '' }}>Estado de conservación</option>
+            <option value="Perfecto" {{ $ordene->estado_conservacion == 'Perfecto' ? 'selected' : '' }}>Perfecto</option>
+            <option value="Muy bueno" {{ $ordene->estado_conservacion == 'Muy bueno' ? 'selected' : '' }}>Muy bueno</option>
+            <option value="Bueno" {{ $ordene->estado_conservacion == 'Bueno' ? 'selected' : '' }}>Bueno</option>
+            <option value="Antigüo" {{ $ordene->estado_conservacion == 'Antigüo' ? 'selected' : '' }}>Antigüo</option>
+            <option value="Necesita arreglos" {{ $ordene->estado_conservacion == 'Necesita arreglos' ? 'selected' : '' }}>Necesita arreglos</option>
+            <option value="Malo" {{ $ordene->estado_conservacion == 'Malo' ? 'selected' : '' }}>Malo</option>
         </select>
         @error('estado_conservacion')
             <small class="text-danger">{{ $message }}</small>

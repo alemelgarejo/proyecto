@@ -87,8 +87,8 @@
         <div class="mb-4">
             <label for="estado" class="form-label">Estado</label>
             <select name="estado" id="estado" class="form-control" value="{{ old('estado', $miscliente->estado) }}">
-                <option value="Activo">Activo</option>
-                <option value="Inactivo">Inactivo</option>
+                <option value="Activo" {{ $miscliente->estado == 'Activo' ? 'selected' : '' }}>Activo</option>
+                <option value="Inactivo" {{ $miscliente->estado == 'Inactivo' ? 'selected' : '' }}>Inactivo</option>
             </select>
             @error('estado')
                 <small class="text-danger">{{ $message }}</small>
