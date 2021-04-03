@@ -55,15 +55,37 @@
             @enderror
         </div>
 
-        {{-- Tipo --}}
+        {{-- Tipo de propiedad --}}
         <div class="mb-4">
-            <label for="tipo" class="form-label">Tipo</label>
-            <input name="tipo" placeholder="Tipo"  type="text" class="form-control" id="tipo" aria-describedby="tipo"
-                value="{{ old('tipo', $mispropiedade->tipo) }}">
+            <label for="tipo" class="form-label">Tipo de propiedad</label>
+            <select name="tipo" placeholder="Tipo de propiedad" id="tipo" class="form-control" value="{{ old('tipo', $mispropiedade->tipo) }}">
+                <option value="1">Tipo de propiedad</option>
+                <option value="Casa terrera">Casa terrera</option>
+                <option value="Piso">Piso</option>
+                <option value="Estudio">Estudio</option>
+                <option value="Local">Local</option>
+                <option value="Nave">Nave</option>
+                <option value="Negocio">Negocio</option>
+            </select>
             @error('tipo')
                 <small class="text-danger">{{ $message }}</small>
             @enderror
         </div>
+		
+		{{-- Tipo de interes --}}
+        <div class="mb-4">
+            <label for="tipo_interes" class="form-label">¿Qué desea hacer con su propiedad?</label>
+            <select name="tipo_interes" placeholder="¿Qué desea hacer con su propiedad?" id="tipo" class="form-control" value="{{ old('tipo_interes', $mispropiedade->tipo_interes) }}">
+                <option value="1">¿Qué desea hacer con su propiedad?</option>
+                <option value="Venta">Venta</option>
+                <option value="Alquiler">Alquiler</option>
+                <option value="Traspaso">Traspaso</option>
+            </select>
+            @error('tipo')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
+        </div>
+
 
         {{-- Dirección --}}
         <div class="mb-4">

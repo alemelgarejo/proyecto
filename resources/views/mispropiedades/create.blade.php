@@ -65,7 +65,21 @@
                 <option value="Nave">Nave</option>
                 <option value="Negocio">Negocio</option>
             </select>
-            @error('tipo_propiedad')
+            @error('tipo')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
+        </div>
+		
+		{{-- Tipo de interes --}}
+        <div class="mb-4">
+            <label for="tipo_interes" class="form-label">¿Qué desea hacer con su propiedad?</label>
+            <select name="tipo_interes" placeholder="¿Qué desea hacer con su propiedad?" id="tipo" class="form-control" value="{{ old('tipo_interes', $mispropiedade->tipo_interes) }}">
+                <option value="1">¿Qué desea hacer con su propiedad?</option>
+                <option value="Venta">Venta</option>
+                <option value="Alquiler">Alquiler</option>
+                <option value="Traspaso">Traspaso</option>
+            </select>
+            @error('tipo')
                 <small class="text-danger">{{ $message }}</small>
             @enderror
         </div>

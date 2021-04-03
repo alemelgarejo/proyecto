@@ -19,6 +19,7 @@ class CreatePropiedadesTable extends Migration
             $table->string('estado', 100);
             $table->float('valoracion', 100)->nullable();
             $table->string('tipo', 40)->nullable();
+            $table->string('tipo_interes', 255)->nullable();
             $table->string('direccion', 500)->nullable();
             $table->string('ciudad', 50)->nullable();
             $table->string('provincia', 50)->nullable();

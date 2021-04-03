@@ -28,6 +28,7 @@ class StorePropiedadeRequest extends FormRequest
             'estado' => ['required'],
             'valoracion' => 'nullable',
             'tipo' => ['required', 'string', 'max:40', 'min:1'],
+            'tipo_interes' => ['required', 'string', 'max:255', 'min:1'],
             'direccion' => ['required', 'string', 'max:250', 'min:2', 'unique:propiedades'],
             'ciudad' => 'required|string|max:50',
             'provincia' => 'required|string|max:50',

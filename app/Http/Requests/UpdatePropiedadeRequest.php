@@ -28,6 +28,7 @@ class UpdatePropiedadeRequest extends FormRequest
                 'estado' => ['required'],
                 'valoracion' => 'required',
                 'tipo' => ['required', 'string', 'max:40', 'min:1'],
+            	'tipo_interes' => ['required', 'string', 'max:255', 'min:1'],
                 'direccion' => 'required|string|max:250|min:2|unique:propiedades,direccion,'.$this->route('propiedade')->id,
                 'ciudad' => 'required|string|max:50',
                 'provincia' => 'required|string|max:50',

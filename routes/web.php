@@ -9,6 +9,7 @@ use App\Http\Controllers\OrdeneController;
 use App\Http\Controllers\PropiedadeController;
 use App\Http\Controllers\PropietarioController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,4 +43,9 @@ Route::resource('dashboard/mispropiedades', MipropiedadeController::class);
 
 Route::get('home', function(){
     return view('vista-cliente.index');
-});
+})->name('vista.index');
+Route::get('home/propiedades', [WebController::class, 'propiedades'])->name('vista.propiedades');
+Route::get('home/agentes', [WebController::class, 'agentes'])->name('vista.agentes');
+Route::get('home/contacto', function(){
+    return view('vista-cliente.contact');
+})->name('vista.contacto');
