@@ -15,6 +15,7 @@ class CreateNewUser implements CreatesNewUsers
 {
     use PasswordValidationRules;
 
+
     /**
      * Create a newly registered user.
      *
@@ -26,8 +27,8 @@ class CreateNewUser implements CreatesNewUsers
         Validator::make($input, [
             'name' => ['required', 'string', 'max:40'],
             'surname' => ['required', 'string', 'max:100'],
-            'comercial' => ['required', 'string', 'max:6'],
-            'estado' => ['required', 'string', 'max:15'],
+            'comercial' => ['string', 'max:6'],
+            'estado' => ['string', 'max:15'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'], //editar con lo aprendido
             'dni' => ['required', 'string', 'max:9', 'min:9', 'unique:users'],
             'telefono' => ['required', 'string', 'max:9', 'min:9', 'unique:users'],
@@ -40,7 +41,7 @@ class CreateNewUser implements CreatesNewUsers
             return tap(User::create([
                 'name' => $input['name'],
                 'surname' => $input['surname'],
-                'role_id' => 2,
+                'role_id' => 3,
                 'comercial' => $input['comercial'],
                 'estado' => $input['estado'],
                 'email' => $input['email'],

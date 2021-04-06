@@ -44,9 +44,17 @@ class WebController extends Controller
 
     public function storeMessage(StoreMessageRequest $request)
     {
-       Message::create($request->validated());
-        return redirect('home')->with('status', 'Propietario creado con éxito.');
+        Message::create($request->validated());
+        return redirect()->back()->with('status', 'Mensaje enviado con éxito.');
     }
 
-
+    //Login y registro
+    public function login()
+    {
+        return view('vista-cliente.login');
+    }
+    public function register()
+    {
+        return view('vista-cliente.register');
+    }
 }

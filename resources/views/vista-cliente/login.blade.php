@@ -87,9 +87,9 @@
 							<li><a href="{{ route('vista.index') }}">Inmodata</a></li>
 							<li><a href="{{ route('vista.propiedades') }}" class="fh5co-sub-ddown">Propiedades</a></li>
 							<li><a href="{{ route('vista.agentes') }}">Agentes</a></li>
-							<li class="active"><a href="{{ route('vista.contacto') }}">Contacto</a></li>
+							<li><a href="{{ route('vista.contacto') }}">Contacto</a></li>
                             @guest
-                                <li><a href="{{ route('vista.login') }}">Login</a></li>
+                                <li class="active"><a href="{{ route('vista.login') }}">Login</a></li>
                                 <li><a href="{{ route('vista.register') }}">Registro</a></li>
                             @endguest
                             @auth
@@ -104,6 +104,7 @@
                                     </form>
                                 </li>
                             @endauth
+
 						</ul>
 					</nav>
 				</div>
@@ -121,7 +122,7 @@
 			   			<div class="row">
 				   			<div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
 			   				<div class="slider-text-inner">
-		   						<h2 class="heading-title">Contáctanos</h2>
+		   						<h2 class="heading-title">Inicia sesión</h2>
 			   				</div>
 			   			</div>
 				   		</div>
@@ -131,15 +132,21 @@
 		  	</div>
 		</aside>
 
+                @if (session('status'))
+                    <div class="mb-4 font-medium text-sm text-green-600">
+                        {{ session('status') }}
+                    </div>
+                @endif
+
 		<div id="fh5co-contact">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
-						<h3>Información de contacto</h3>
-						<p>Eztablezca contacto con el personal de la empresa a través de éste apartado.</p>
+						<h3>Inicio de sesión</h3>
+						<p>Puede iniciar sesión y así facilitar el contacto con la empresa.</p>
 					</div>
 				</div>
-				<form  class="row"  method="POST" action="{{ route('vista.storeMessage') }}" >
+				<form  class="row"  method="POST" action="{{ route('login') }}" >
                     @csrf
                     @method('POST')
 					<div class="row animate-box">
@@ -156,39 +163,36 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
-										<input type="text" name="name" class="form-control" placeholder="Nombre">
-                                        @error('name')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-                                        <input type="text" name="email" class="form-control" placeholder="Email">
+                                        <x-jet-input id="email" class="form-control" type="email" name="email" :value="old('email')" placeholder="Email" required autofocus />
                                         @error('email')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
 									</div>
 								</div>
+                                <div class="col-md-12">
+									<div class="form-group">
+										<x-jet-input id="password" class="form-control" type="password" name="password" required autocomplete="current-password" placeholder="Password"  />
+                                        @error('password')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<button type="submit" class="btn btn-primary">Login</button>
+									</div>
+								</div>
                                 <div class="col-md-6">
 									<div class="form-group">
-										<input type="number" name="telefono" class="form-control" placeholder="Teléfono">
-                                        @error('telefono')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-									</div>
-								</div>
-								<div class="col-md-12">
-									<div class="form-group">
-										<textarea name="message" class="form-control" id="" cols="30" rows="7" placeholder="Mensaje"></textarea>
-                                        @error('message')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-									</div>
-								</div>
-								<div class="col-md-12">
-									<div class="form-group">
-										<button type="submit" class="btn btn-primary">Enviar</button>
+                                        @if (Route::has('password.request'))
+                                            <a href="{{ route('password.request') }}">
+                                                {{ __('¿Olvidaste tu contraseña?') }}
+                                            </a>
+                                        @endif
+                                        <br>
+                                        <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('vista.register') }}">
+                                            {{ __('¿No tienes cuenta? Regístrate aquí.') }}
+                                        </a>
 									</div>
 								</div>
 							</div>

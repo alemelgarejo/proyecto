@@ -87,10 +87,10 @@
 							<li><a href="{{ route('vista.index') }}">Inmodata</a></li>
 							<li><a href="{{ route('vista.propiedades') }}" class="fh5co-sub-ddown">Propiedades</a></li>
 							<li><a href="{{ route('vista.agentes') }}">Agentes</a></li>
-							<li class="active"><a href="{{ route('vista.contacto') }}">Contacto</a></li>
+							<li><a href="{{ route('vista.contacto') }}">Contacto</a></li>
                             @guest
                                 <li><a href="{{ route('vista.login') }}">Login</a></li>
-                                <li><a href="{{ route('vista.register') }}">Registro</a></li>
+                                <li class="active"><a href="{{ route('vista.register') }}">Registro</a></li>
                             @endguest
                             @auth
                                 <li>
@@ -104,6 +104,7 @@
                                     </form>
                                 </li>
                             @endauth
+
 						</ul>
 					</nav>
 				</div>
@@ -121,7 +122,7 @@
 			   			<div class="row">
 				   			<div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
 			   				<div class="slider-text-inner">
-		   						<h2 class="heading-title">Contáctanos</h2>
+		   						<h2 class="heading-title">Regístrate</h2>
 			   				</div>
 			   			</div>
 				   		</div>
@@ -131,15 +132,21 @@
 		  	</div>
 		</aside>
 
+                @if (session('status'))
+                    <div class="mb-4 font-medium text-sm text-green-600">
+                        {{ session('status') }}
+                    </div>
+                @endif
+
 		<div id="fh5co-contact">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
-						<h3>Información de contacto</h3>
-						<p>Eztablezca contacto con el personal de la empresa a través de éste apartado.</p>
+						<h3>Regístrate</h3>
+						<p>Puede registrarse como nuevo usuario y así facilitar el contacto con la empresa.</p>
 					</div>
 				</div>
-				<form  class="row"  method="POST" action="{{ route('vista.storeMessage') }}" >
+				<form  class="row"  method="POST" action="{{ route('register') }}" >
                     @csrf
                     @method('POST')
 					<div class="row animate-box">
@@ -154,17 +161,25 @@
 						</div>
 						<div class="col-md-6">
 							<div class="row">
-								<div class="col-md-12">
+								<div class="col-md-6">
 									<div class="form-group">
-										<input type="text" name="name" class="form-control" placeholder="Nombre">
+                                        <x-jet-input id="name" class="form-control" type="text" name="name" :value="old('name')" placeholder="Nombre" autocomplete="name" />
                                         @error('name')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
-                                    </div>
+									</div>
 								</div>
-								<div class="col-md-6">
+                                <div class="col-md-6">
 									<div class="form-group">
-                                        <input type="text" name="email" class="form-control" placeholder="Email">
+										<x-jet-input id="surname" class="form-control" type="text" name="surname" :value="old('surname')" placeholder="Apellidos" autocomplete="surname" />
+                                        @error('surname')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+									</div>
+								</div>
+                                <div class="col-md-12">
+									<div class="form-group">
+										<x-jet-input id="email"  class="form-control" type="text" name="email" :value="old('email')" placeholder="Email"  />
                                         @error('email')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
@@ -172,23 +187,64 @@
 								</div>
                                 <div class="col-md-6">
 									<div class="form-group">
-										<input type="number" name="telefono" class="form-control" placeholder="Teléfono">
+										<x-jet-input id="dni"  class="form-control" type="text" name="dni" :value="old('dni')" placeholder="DNI"  />
+                                        @error('dni')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+									</div>
+								</div>
+                                <div class="col-md-6">
+									<div class="form-group">
+										<x-jet-input id="telefono" class="form-control" type="text" name="telefono" :value="old('telefono')" placeholder="Teléfono"  />
                                         @error('telefono')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
 									</div>
 								</div>
-								<div class="col-md-12">
+                                <div class="col-md-12">
 									<div class="form-group">
-										<textarea name="message" class="form-control" id="" cols="30" rows="7" placeholder="Mensaje"></textarea>
-                                        @error('message')
+										<x-jet-input id="fecha_nacimiento" class="form-control" type="date" name="fecha_nacimiento" :value="old('fecha_nacimiento')" placeholder="Fecha de nacimiento"  />
+                                        @error('fecha_nacimiento')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
 									</div>
 								</div>
-								<div class="col-md-12">
+                                <div class="col-md-6">
 									<div class="form-group">
-										<button type="submit" class="btn btn-primary">Enviar</button>
+										<x-jet-input id="password" class="form-control" type="password" name="password" placeholder="Contraseña"  />
+                                        @error('password')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+									</div>
+								</div>
+                                <div class="col-md-6">
+									<div class="form-group">
+										<x-jet-input id="password_confirmation" class="form-control" type="password" name="password_confirmation" placeholder="Repita la contraseña"   />
+                                        @error('password_confirmation')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+									</div>
+								</div>
+                                <div class="col-md-6">
+									<div class="form-group">
+										<x-jet-input id="comercial" class="form-control hidden" type="text" name="comercial" :value="old('comercial')" value="000000"/>
+									</div>
+								</div>
+                                <div class="col-md-6">
+									<div class="form-group">
+										<x-jet-input id="estado" class="form-control hidden" type="text" name="estado" :value="old('estado')" value="Activo"/>
+									</div>
+								</div>
+								<div class="col-md-12" style="margin-top: -5% !important">
+									<div class="form-group">
+										<button type="submit" class="btn btn-primary">Registro</button>
+									</div>
+								</div>
+                                <div class="col-md-6">
+									<div class="form-group">
+                                            <a href="{{ route('vista.login') }}">
+                                                {{ __('¿Ya tienes una cuenta? Inicia sesión.') }}
+                                            </a>
 									</div>
 								</div>
 							</div>

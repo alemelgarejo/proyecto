@@ -1,4 +1,4 @@
-<x-app-layout>
+cd inmo<x-app-layout>
 	<x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             <a href="{{ route('dashboard') }}" style="color: rgb(111, 111, 111);">Inmodata</a> /

@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect('/dashboard');
+    return redirect('/home');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -36,15 +36,17 @@ Route::post('dashboard/users/{user}', [UserController::class, 'updatePass'])->na
 Route::resource('dashboard/clientes', ClienteController::class)->middleware('checkRole');
 Route::resource('dashboard/propietarios', PropietarioController::class)->middleware('checkRole');
 Route::resource('dashboard/propiedades', PropiedadeController::class)->middleware('checkRole');
-Route::resource('dashboard/misclientes', MiclienteController::class);
-Route::resource('dashboard/ordenes', OrdeneController::class)->middleware('checkRole');
-Route::resource('dashboard/mispropietarios', MipropietarioController::class);
-Route::resource('dashboard/mispropiedades', MipropiedadeController::class);
+Route::resource('dashboard/misclientes', MiclienteController::class)->middleware('checkRole1');
+Route::resource('dashboard/ordenes', OrdeneController::class)->middleware('checkRole1');
+Route::resource('dashboard/mispropietarios', MipropietarioController::class)->middleware('checkRole1');
+Route::resource('dashboard/mispropiedades', MipropiedadeController::class)->middleware('checkRole1');
 
 Route::get('home', [WebController::class, 'index'])->name('vista.index');
-Route::post('home', [WebController::class, 'storeMessage'])->name('vista.storeMessage');
+Route::post('home', [WebController::class, 'storeMessage'])->name('vista.storeMessage')->middleware('checkRoleTotal');
 Route::get('home/propiedades', [WebController::class, 'propiedades'])->name('vista.propiedades');
 Route::get('home/agentes', [WebController::class, 'agentes'])->name('vista.agentes');
+Route::get('home/register', [WebController::class, 'register'])->name('vista.register');
+Route::get('home/login', [WebController::class, 'login'])->name('vista.login');
 Route::get('home/contacto', function(){
     return view('vista-cliente.contact');
 })->name('vista.contacto');

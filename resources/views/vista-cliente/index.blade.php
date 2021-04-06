@@ -74,6 +74,11 @@
 
 	</head>
 	<body>
+        @if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
 
 		<div id="fh5co-wrapper">
 		<div id="fh5co-page">
@@ -82,7 +87,7 @@
 			<div class="container">
 				<div class="nav-header">
 					<a href="{{ route('vista.index') }}" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-					<h1 id="fh5co-logo"><a href="/home"><i class="icon-home"></i>Inmo<span>data</span></a></h1>
+					<h1 id="fh5co-logo"><a href="{{ route('vista.index') }}"><i class="icon-home"></i>Inmo<span>data</span></a></h1>
 					<!-- START #fh5co-menu-wrap -->
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
@@ -90,6 +95,23 @@
 							<li><a href="{{ route('vista.propiedades') }}" class="fh5co-sub-ddown">Propiedades</a></li>
 							<li><a href="{{ route('vista.agentes') }}">Agentes</a></li>
 							<li><a href="{{ route('vista.contacto') }}">Contacto</a></li>
+                            @guest
+                                <li><a href="{{ route('vista.login') }}">Login</a></li>
+                                <li><a href="{{ route('vista.register') }}">Registro</a>
+                            </li>
+                            @endguest
+                            @auth
+                                <li>
+                                    <!-- Authentication -->
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        @method('post')
+                                        <x-jet-responsive-nav-link href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
+                                            {{ __('Logout') }}
+                                        </x-jet-responsive-nav-link>
+                                    </form>
+                                </li>
+                            @endauth
 						</ul>
 					</nav>
 				</div>
@@ -279,9 +301,8 @@
 								<i class="icon-map"></i>
 							</span>
 							<div class="feature-copy">
-								<h3>Move House</h3>
-								<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
-								<p><a href="#">Learn More</a></p>
+								<h3>Efectividad</h3>
+								<p>Encuentre la propiedad deseada.</p>
 							</div>
 						</div>
 
@@ -483,21 +504,33 @@
 								<div class="col-md-12">
 									<div class="form-group">
 										<input type="text" name="name" class="form-control" placeholder="Nombre">
-									</div>
+                                        @error('name')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
 								</div>
 								<div class="col-md-12">
 									<div class="form-group">
-										<input type="text" name="email" class="form-control" placeholder="Email">
+                                        <input type="text" name="email" class="form-control" placeholder="Email">
+                                        @error('email')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
 									</div>
 								</div>
                                 <div class="col-md-12">
 									<div class="form-group">
 										<input type="number" name="telefono" class="form-control" placeholder="Teléfono">
+                                        @error('telefono')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
 									</div>
 								</div>
 								<div class="col-md-12">
 									<div class="form-group">
 										<textarea name="message" class="form-control" id="" cols="30" rows="7" placeholder="Mensaje"></textarea>
+                                        @error('message')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
 									</div>
 								</div>
 								<div class="col-md-12">

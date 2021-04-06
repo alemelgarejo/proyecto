@@ -13,12 +13,12 @@
 	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
 	<meta name="author" content="FREEHTML5.CO" />
 
-  <!-- 
+  <!--
 	//////////////////////////////////////////////////////
 
-	FREE HTML5 TEMPLATE 
+	FREE HTML5 TEMPLATE
 	DESIGNED & DEVELOPED by FREEHTML5.CO
-		
+
 	Website: 		http://freehtml5.co/
 	Email: 			info@freehtml5.co
 	Twitter: 		http://twitter.com/fh5co
@@ -42,7 +42,7 @@
 	<link rel="shortcut icon" href="{{asset('favicon.ico')}}">
 
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,300' rel='stylesheet' type='text/css'>
-	
+
 	<link rel="stylesheet" href="{{asset('css/animate.css')}}">
 	<!-- Icomoon Icon Fonts-->
 	<link rel="stylesheet" href="{{asset('css/icomoon.css')}}">
@@ -59,7 +59,7 @@
 	<!-- CS Select -->
 	<link rel="stylesheet" href="{{asset('css/cs-select.css')}}">
 	<link rel="stylesheet" href="{{asset('css/cs-skin-border.css')}}">
-	
+
 	<link rel="stylesheet" href="{{asset('css/style.css')}}">
 
 
@@ -87,6 +87,22 @@
 							<li><a href="{{ route('vista.propiedades') }}" class="fh5co-sub-ddown">Propiedades</a></li>
 							<li class="active"><a href="{{ route('vista.agentes') }}">Agentes</a></li>
 							<li><a href="{{ route('vista.contacto') }}">Contacto</a></li>
+                            @guest
+                                <li><a href="{{ route('vista.login') }}">Login</a></li>
+                                <li><a href="{{ route('vista.register') }}">Registro</a></li>
+                            @endguest
+                            @auth
+                                <li>
+                                    <!-- Authentication -->
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        @method('post')
+                                        <x-jet-responsive-nav-link href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
+                                            {{ __('Logout') }}
+                                        </x-jet-responsive-nav-link>
+                                    </form>
+                                </li>
+                            @endauth
 						</ul>
 					</nav>
 				</div>
@@ -143,7 +159,7 @@
 							<h3 class="section-title">Sobre Inmodata</h3>
 							<p>Aplicaciรณn web desarrollada por Alejandro Melgarejo Curbelo, se compone de un apartado de administraciรณn para la propia inmobiliaria y un apartado para que los clientes puedan acceder a las propiedades desde la web.</p>
 						</div>
-						
+
 						<div class="col-md-3 col-md-push-1">
 							<h3 class="section-title">Links</h3>
 							<ul>
@@ -194,7 +210,7 @@
 			</div>
 		</footer>
 
-	
+
 
 	</div>
 	<!-- END fh5co-page -->
@@ -224,7 +240,7 @@
 	<script src="{{asset('js/classie.js')}}"></script>
 	<script src="{{asset('js/selectFx.js')}}"></script>
 
-	
+
 	<!-- Main JS -->
 	<script src="{{asset('js/main.js')}}"></script>
 
