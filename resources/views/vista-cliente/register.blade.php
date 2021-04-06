@@ -80,7 +80,7 @@
 			<div class="container">
 				<div class="nav-header">
 					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-					<h1 id="fh5co-logo"><a href="{{ route('vista.index') }}"><i class="icon-home"></i>Inmo<span>data</span></a></h1>
+					<h1 id="fh5co-logo"><a href="{{ route('vista.index') }}"><i class="icon-home32"></i>Inmo<span>data</span></a></h1>
 					<!-- START #fh5co-menu-wrap -->
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
@@ -300,11 +300,11 @@
 					<div class="row">
 						<div class="col-md-12">
 							<p class="fh5co-social-icons">
-								<a href="#"><i class="icon-twitter2"></i></a>
-								<a href="#"><i class="icon-facebook2"></i></a>
-								<a href="#"><i class="icon-instagram"></i></a>
-								<a href="#"><i class="icon-dribbble2"></i></a>
-								<a href="#"><i class="icon-youtube"></i></a>
+								<a href="https://twitter.com/melgarejoale" target="_blank"><i class="icon-twitter2"></i></a>
+								<a href="https://www.facebook.com/ale.melgarejo.3/" target="_blank"><i class="icon-facebook2"></i></a>
+								<a href="https://www.instagram.com/alemelgarejo96/" target="_blank"><i class="icon-instagram"></i></a>
+								<a href="https://github.com/alemelgarejo" target="_blank"><i class="icon-github"></i></a>
+								<a href="https://www.youtube.com/channel/UCWSlrhRNTczApvagE6npDyQ" target="_blank"><i class="icon-youtube"></i></a>
 							</p>
 							<p>Copyright 2021 <a href="https://github.com/alemelgarejo" target="_blank">alemelgarejo</a>. <br>Hecho por <a href="https://github.com/alemelgarejo" target="_blank">Alejandro Melgarejo</a></p>
 						</div>

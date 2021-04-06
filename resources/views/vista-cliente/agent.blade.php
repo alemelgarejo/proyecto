@@ -79,7 +79,7 @@
 			<div class="container">
 				<div class="nav-header">
 					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-					<h1 id="fh5co-logo"><a href="{{ route('vista.index') }}"><i class="icon-home"></i>Inmo<span>data</span></a></h1>
+					<h1 id="fh5co-logo"><a href="{{ route('vista.index') }}"><i class="icon-home32"></i></i>Inmo<span>data</span></a></h1>
 					<!-- START #fh5co-menu-wrap -->
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
@@ -121,7 +121,6 @@
 				   			<div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
 			   				<div class="slider-text-inner">
 		   						<h2 class="heading-title">Nuestros Agentes</h2>
-		   						<p class="fh5co-lead">Designed with <i class="icon-heart3"></i> by the fine folks at <a href="http://freehtml5.co" target="_blank">FreeHTML5.co</a></p>
 			   				</div>
 			   			</div>
 				   		</div>
@@ -137,7 +136,7 @@
 					@foreach($users as $user)
 						<div class="col-sm-4 text-center animate-box" data-animate-effect="fadeIn">
 							<div class="fh5co-staff">
-								<img class="img-responsive" src="{{asset('images/user-1.jpg')}}" alt="Free HTML5 Templates by freeHTML5.co">
+								<img class="img-responsive" src="{{asset('images/user.png')}}" alt="Free HTML5 Templates by freeHTML5.co">
 								<h3>{{$user->name}} {{$user->surname}}</h3>
 								<span class="list-prop">Property List: 5</span>
 								<p>Quos quia provident consequuntur culpa facere ratione maxime commodi voluptates id repellat</p>
@@ -197,11 +196,11 @@
 					<div class="row">
 						<div class="col-md-12">
 							<p class="fh5co-social-icons">
-								<a href="#"><i class="icon-twitter2"></i></a>
-								<a href="#"><i class="icon-facebook2"></i></a>
-								<a href="#"><i class="icon-instagram"></i></a>
-								<a href="#"><i class="icon-dribbble2"></i></a>
-								<a href="#"><i class="icon-youtube"></i></a>
+								<a href="https://twitter.com/melgarejoale" target="_blank"><i class="icon-twitter2"></i></a>
+								<a href="https://www.facebook.com/ale.melgarejo.3/" target="_blank"><i class="icon-facebook2"></i></a>
+								<a href="https://www.instagram.com/alemelgarejo96/" target="_blank"><i class="icon-instagram"></i></a>
+								<a href="https://github.com/alemelgarejo" target="_blank"><i class="icon-github"></i></a>
+								<a href="https://www.youtube.com/channel/UCWSlrhRNTczApvagE6npDyQ" target="_blank"><i class="icon-youtube"></i></a>
 							</p>
 							<p>Copyright 2021 <a href="https://github.com/alemelgarejo" target="_blank">alemelgarejo</a>. <br>Hecho por <a href="https://github.com/alemelgarejo" target="_blank">Alejandro Melgarejo</a></p>
 						</div>

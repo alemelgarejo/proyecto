@@ -52,8 +52,41 @@
                             <a class="btn btn-info btn-sm mt-1" style="color: white;" href="{{ route('propiedades.show', $propiedade->id) }}"><i class="fas fa-info"></i></a>
                             <a class="btn btn-warning btn-sm mt-1" style="color: white;"
                                 href="{{ route('propiedades.edit', $propiedade->id) }}"><i class="fas fa-edit"></i></a>
-
-                                <button class="btn btn-danger btn-sm mt-1" onclick="document.getElementById('id01').style.display='block'"><i class="fas fa-trash-alt"></i></button>
+                                <main x-data="{ 'isDialogOpen': false }" @keydown.escape="isDialogOpen = false">
+                                    <section>
+                                        <button type="button" class="btn btn-danger btn-sm mt-1" @click="isDialogOpen = true"><i class="fas fa-trash-alt"></i></button>
+                                        <!-- overlay -->
+                                        <div class="overflow-full" style="background-color: rgba(0,0,0,0.5)" x-show="isDialogOpen" :class="{ 'absolute inset-0 z-10 flex items-start justify-center': isDialogOpen }">
+                                            <!-- dialog -->
+                                            <div class="bg-white shadow-2xl m-4 sm:m-8" x-show="isDialogOpen" @click.away="isDialogOpen = false">
+                                                <div class="flex justify-between items-center border-b p-2 text-xl">
+                                                    <h6 class="text-xl font-bold">Propiedad: {{$propiedade->direccion}}</h6>
+                                                    <button type="button" @click="isDialogOpen = false">✖</button>
+                                                </div>
+                                                <div class="p-2">
+                                                    <!-- content -->
+                                                    <h4 class="font-bold">¿Desea eliminar ésta propiedad?</h4>
+                                                    <aside class="max-w-lg mt-4 p-4 bg-yellow-100 border border-yellow-500">
+                                                        <p> - Dirección: {{$propiedade->direccion}}, <br>
+                                                            - Ciudad: {{$propiedade->ciudad}}, <br>
+                                                            - Estado: {{$propiedade->estado}}, <br>
+                                                        </p>
+                                                        <p>⚠ Asegurate de haber seleccionado los datos correctos.</p>
+                                                    </aside>
+                                                    <ul class="bg-gray-100 border m-8 px-4">
+                                                        <div class="modal-footer">
+                                                            <form id="formDelete" action="{{ route('propiedades.destroy', $propiedade->id) }}" data-action="{{ route('propiedades.destroy',  $propiedade->id) }}" method="POST">
+                                                                @method('DELETE')
+                                                                @csrf
+                                                                <button type="submit" class="btn btn-danger btn-sm">Borrar <i class="fas fa-trash-alt"></i></button>
+                                                            </form>
+                                                        </div>
+                                                    </ul>
+                                                </div>
+                                            </div><!-- /dialog -->
+                                        </div><!-- /overlay -->
+                                    </section>
+                                </main>
                         </td>
                 </tr>
                 @endforeach
@@ -66,7 +99,8 @@
     @if ($propiedades->isEmpty())
 
     @elseif (!$propiedades->isEmpty())
-    <div id="id01" class="modal" style="width:300px; margin-top:15%; margin-left:39%;  margin-right:39%;">
+    @foreach ($propiedades as $propiedade)
+    <div id="{{$propiedade->id}}" class="modal" style="width:300px; margin-top:15%; margin-left:39%;  margin-right:39%;">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalLabel"></h5>
@@ -88,6 +122,7 @@
             </div>
         </div>
       </div>
+    @endforeach
       @endif
 
 

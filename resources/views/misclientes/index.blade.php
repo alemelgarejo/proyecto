@@ -62,8 +62,44 @@
                             <a class="btn btn-info btn-sm mt-1" style="color: white;" href="{{ route('misclientes.show', $miscliente->id) }}"><i class="fas fa-info"></i></a>
                             <a class="btn btn-warning btn-sm mt-1" style="color: white;"
                                 href="{{ route('misclientes.edit', $miscliente->id) }}"><i class="fas fa-edit"></i></a>
-							<a class="btn btn-success btn-sm mt-1" href="{{ route('ordenes.create') }}"><i class="fas fa-sort"></i></a>
-                            <button class="btn btn-danger btn-sm mt-1" onclick="document.getElementById('id01').style.display='block'"><i class="fas fa-trash-alt"></i></button>
+							<a class="btn btn-success btn-sm mt-1" href="{{ route('misclientes.create') }}"><i class="fas fa-sort"></i></a>
+                            <main x-data="{ 'isDialogOpen': false }" @keydown.escape="isDialogOpen = false">
+                                <section>
+                                    <button type="button" class="btn btn-danger btn-sm mt-1" @click="isDialogOpen = true"><i class="fas fa-trash-alt"></i></button>
+                                    <!-- overlay -->
+                                    <div class="overflow-full" style="background-color: rgba(0,0,0,0.5)" x-show="isDialogOpen" :class="{ 'absolute inset-0 z-10 flex items-start justify-center': isDialogOpen }">
+                                        <!-- dialog -->
+                                        <div class="bg-white shadow-2xl m-4 sm:m-8" x-show="isDialogOpen" @click.away="isDialogOpen = false">
+                                            <div class="flex justify-between items-center border-b p-2 text-xl">
+                                                <h6 class="text-xl font-bold">Cliente: {{$miscliente->name}}, {{$miscliente->surname}}</h6>
+                                                <button type="button" @click="isDialogOpen = false">✖</button>
+                                            </div>
+                                            <div class="p-2">
+                                                <!-- content -->
+                                                <h4 class="font-bold">¿Desea eliminar éste cliente?</h4>
+                                                <aside class="max-w-lg mt-4 p-4 bg-yellow-100 border border-yellow-500">
+                                                    <p> - Nombre: {{$miscliente->name}}, <br>
+                                                        - Apellidos: {{$miscliente->surname}}, <br>
+                                                        - Email: {{$miscliente->email}}, <br>
+                                                        - DNI: {{$miscliente->dni}}, <br>
+                                                        - Estado: {{$miscliente->estado}}, <br>
+                                                    </p>
+                                                    <p>⚠ Asegurate de haber seleccionado los datos correctos.</p>
+                                                </aside>
+                                                <ul class="bg-gray-100 border m-8 px-4">
+                                                    <div class="modal-footer">
+                                                        <form id="formDelete" action="{{ route('misclientes.destroy', $miscliente->id) }}" data-action="{{ route('misclientes.destroy',  $miscliente->id) }}" method="POST">
+                                                            @method('DELETE')
+                                                            @csrf
+                                                            <button type="submit" class="btn btn-danger btn-sm">Borrar <i class="fas fa-trash-alt"></i></button>
+                                                        </form>
+                                                    </div>
+                                                </ul>
+                                            </div>
+                                        </div><!-- /dialog -->
+                                    </div><!-- /overlay -->
+                                </section>
+                            </main>
                         </td>
                     </tr>
                 @endforeach
@@ -71,36 +107,6 @@
         </table>
         <br>
     </div><br>
-
-    @if ($misclientes->isEmpty())
-
-    @elseif (!$misclientes->isEmpty())
-    <div id="id01" class="modal" style="width:300px; margin-top:15%; margin-left:39%;  margin-right:39%;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalLabel"></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>¿Desea eliminar el registro?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" onclick="document.getElementById('id01').style.display='none'"  data-dismiss="modal">Close</button>
-                <form id="formDelete" action="{{ route('misclientes.destroy', $miscliente->id) }}"
-                    data-action="{{ route('misclientes.destroy',  $miscliente->id) }}" method="POST">
-                    @method('DELETE')
-                    @csrf
-                    <button type="submit" class="btn btn-danger">Borrar</button>
-                </form>
-            </div>
-        </div>
-      </div>
-      @endif
-
-
-
 
 </x-app-layout>
 
