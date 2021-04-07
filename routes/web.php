@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\MiclienteController;
 use App\Http\Controllers\MiordeneController;
 use App\Http\Controllers\MipropiedadeController;
@@ -40,6 +41,11 @@ Route::resource('dashboard/misclientes', MiclienteController::class)->middleware
 Route::resource('dashboard/ordenes', OrdeneController::class)->middleware('checkRole1');
 Route::resource('dashboard/mispropietarios', MipropietarioController::class)->middleware('checkRole1');
 Route::resource('dashboard/mispropiedades', MipropiedadeController::class)->middleware('checkRole1');
+//Route::resource('dashboard/files',FileController::class)->middleware('checkRole1');
+Route::get('dashboard/files/{propiedade}',[FileController::class, 'index2'])->name('files.index2')->middleware('checkRole1');
+Route::get('dashboard/files/create/{propiedade}',[FileController::class, 'create2'])->name('files.create2')->middleware('checkRole1');
+Route::post('dashboard/files/{propiedade}',[FileController::class, 'store2'])->name('files.store2')->middleware('checkRole1');
+Route::delete('dashboard/files/{file}',[FileController::class, 'destroy'])->name('files.destroy')->middleware('checkRole1');
 
 Route::get('home', [WebController::class, 'index'])->name('vista.index');
 Route::post('home', [WebController::class, 'storeMessage'])->name('vista.storeMessage')->middleware('checkRoleTotal');

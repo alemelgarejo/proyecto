@@ -11,7 +11,7 @@
         </div>
 
     @endif
-    <a class="btn btn-success btn-sm mt-4" style="margin-left:2.5%;" href="{{ route('propiedades.create') }}" ><i class="fas fa-plus-circle"></i> Añadir</a><br><br>
+    <a href="{{ route('propiedades.create') }}" type="button" style=" margin: 20px 0px 0px 45px; color:black;"><img src="{{asset('images/add-file.png')}}"  alt="deletelogo"  style="float: left; " ></a><br><br>
 
     <div style="width:95%; margin: 0 auto;">
         <table id="propiedadesTable" class="table table-striped table-bordered dt-responsive" width="100%" style="margin: 0 auto;">
@@ -47,14 +47,15 @@
                         <td>{{ $propiedade->ciudad }}</td>
                         <td>{{ $propiedade->provincia }}</td>
                         <td>{{ $propiedade->superficie }}</td>
-                        <td style="text-align: center;"><a target="_blank" href="{{$propiedade->google_maps}}"><i class="fas fa-map-marked-alt"></i></a></td>
-                        <td>
-                            <a class="btn btn-info btn-sm mt-1" style="color: white;" href="{{ route('propiedades.show', $propiedade->id) }}"><i class="fas fa-info"></i></a>
-                            <a class="btn btn-warning btn-sm mt-1" style="color: white;"
-                                href="{{ route('propiedades.edit', $propiedade->id) }}"><i class="fas fa-edit"></i></a>
+                        <td style="text-align: center;"><a target="_blank" href="{{$propiedade->google_maps}}"><img src="{{asset('images/map.png')}}" alt="maplogo" style="width:17%; margin-left:41%;"></i></a></td>
+                        <td style="display: inline-block !important; ">
+                            <a href="{{ route('propiedades.show', $propiedade->id) }}"><img src="{{asset('images/information.png')}}" style="float: left;" alt="infologo"></a>
+                            <a href="{{ route('propiedades.edit', $propiedade->id) }}"><img src="{{asset('images/consent.png')}}" alt="editlogo"  style="float: left; margin: 0px 0px 15px 10px;" ></a>
+                            <a href="{{ route('files.index2', $propiedade->id) }}"><img src="{{asset('images/image.png')}}" alt="editlogo"  style="float: left; margin: 0px 0px 15px 10px;" ></a>
+                            <a href="{{ route('files.create2', $propiedade->id) }}"><img src="{{asset('images/add.png')}}" alt="editlogo"  style="float: left; margin: 0px 0px 15px 10px;" ></a>
                                 <main x-data="{ 'isDialogOpen': false }" @keydown.escape="isDialogOpen = false">
                                     <section>
-                                        <button type="button" class="btn btn-danger btn-sm mt-1" @click="isDialogOpen = true"><i class="fas fa-trash-alt"></i></button>
+                                        <button type="button" @click="isDialogOpen = true"><img src="{{asset('images/recycle-bin.png')}}" alt="deletelogo"  style="float: left; margin: 0px 0px 15px 5px;" ></button>
                                         <!-- overlay -->
                                         <div class="overflow-full" style="background-color: rgba(0,0,0,0.5)" x-show="isDialogOpen" :class="{ 'absolute inset-0 z-10 flex items-start justify-center': isDialogOpen }">
                                             <!-- dialog -->
@@ -74,13 +75,11 @@
                                                         <p>⚠ Asegurate de haber seleccionado los datos correctos.</p>
                                                     </aside>
                                                     <ul class="bg-gray-100 border m-8 px-4">
-                                                        <div class="modal-footer">
-                                                            <form id="formDelete" action="{{ route('propiedades.destroy', $propiedade->id) }}" data-action="{{ route('propiedades.destroy',  $propiedade->id) }}" method="POST">
+                                                            <form id="formDelete" class="m-2 mt-3 ml-2" action="{{ route('propiedades.destroy', $propiedade->id) }}" data-action="{{ route('propiedades.destroy',  $propiedade->id) }}" method="POST">
                                                                 @method('DELETE')
                                                                 @csrf
-                                                                <button type="submit" class="btn btn-danger btn-sm">Borrar <i class="fas fa-trash-alt"></i></button>
+                                                                <button type="submit">Eliminar <img src="{{asset('images/recycle-bin.png')}}" alt="deletelogo"  style="float: left; margin: 0px 0px 15px 5px;" ></button>
                                                             </form>
-                                                        </div>
                                                     </ul>
                                                 </div>
                                             </div><!-- /dialog -->
@@ -95,35 +94,6 @@
         <br>
     </div><br>
 
-
-    @if ($propiedades->isEmpty())
-
-    @elseif (!$propiedades->isEmpty())
-    @foreach ($propiedades as $propiedade)
-    <div id="{{$propiedade->id}}" class="modal" style="width:300px; margin-top:15%; margin-left:39%;  margin-right:39%;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalLabel"></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>¿Desea eliminar el registro?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" onclick="document.getElementById('id01').style.display='none'"  data-dismiss="modal">Close</button>
-                <form id="formDelete" action="{{ route('propiedades.destroy', $propiedade->id) }}"
-                    data-action="{{ route('propiedades.destroy',  $propiedade->id) }}" method="POST">
-                    @method('DELETE')
-                    @csrf
-                    <button type="submit" class="btn btn-danger">Borrar</button>
-                </form>
-            </div>
-        </div>
-      </div>
-    @endforeach
-      @endif
 
 
 </x-app-layout>
