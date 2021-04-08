@@ -111,7 +111,7 @@
                 <small class="text-danger">{{ $message }}</small>
             @enderror
         </div>
-        <button type="submit" class="btn btn-primary btn-sm" style="color: white;"><i class="fas fa-edit"></i> Actualizar</button>
+        <button type="submit" class="" style="color: black;"><img src="{{asset('images/sav.png')}}"  alt="deletelogo"  style="float: left;" >&nbsp;&nbsp;</button>
     </form>
     <br><br>
 </x-app-layout>

@@ -10,7 +10,7 @@
             {{ session('status') }}
         </div>
     @endif
-    <a class="btn btn-success btn-sm mt-4" style="margin-left:2.5%;" href="{{ route('clientes.create') }}" ><i class="fas fa-plus-circle"></i> Añadir</a><br><br>
+    <a href="{{ route('clientes.create') }}" type="button" style=" margin: 20px 0px 0px 45px; color:black;"><img src="{{asset('images/add-file.png')}}"  alt="deletelogo"  style="float: left; " ></a><br><br>
 
     <div style="width:95%; margin: 0 auto;">
         <table id="clientesTable" class="table table-striped table-bordered dt-responsive" width="100%" style="margin: 0 auto;">
@@ -61,10 +61,10 @@
                         <td style="display: inline-block !important;" >
                             <a href="{{ route('clientes.show', $cliente->id) }}"><img src="{{asset('images/information.png')}}" style="float: left;margin: 35px 0px 15px 10px;" alt="infologo"></a>
                             <a href="{{ route('clientes.edit', $cliente->id) }}"><img src="{{asset('images/consent.png')}}" alt="editlogo"  style="float: left; margin: 35px 0px 15px 10px;" ></a>
-                            <a class="btn btn-success btn-sm mt-1" href="{{ route('ordenes.create') }}"><i class="fas fa-sort"></i></a>
+                            <a href="{{ route('ordenes.create', $cliente->id) }}"><img src="{{asset('images/checklist.png')}}" alt="editlogo"  style="float: left; margin: 35px 0px 15px 10px; width:15%;" ></a>
                             <main x-data="{ 'isDialogOpen': false }" @keydown.escape="isDialogOpen = false">
                                 <section>
-                                    <button type="button" @click="isDialogOpen = true"><img src="{{asset('images/recycle-bin.png')}}" alt="deletelogo"  style="float: left; margin: 0px 0px 15px 5px;" ></button>
+                                    <button type="button" @click="isDialogOpen = true"><img src="{{asset('images/recycle-bin.png')}}" alt="deletelogo"  style="float: left; margin: 12px 0px 15px 5px;" ></button>
                                     <!-- overlay -->
                                     <div class="overflow-full" style="background-color: rgba(0,0,0,0.5)" x-show="isDialogOpen" :class="{ 'absolute inset-0 z-10 flex items-start justify-center': isDialogOpen }">
                                         <!-- dialog -->

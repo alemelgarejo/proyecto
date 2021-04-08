@@ -188,6 +188,10 @@
                                 &nbsp;{{ __('Profile') }}
                             </x-jet-dropdown-link>
 
+                            <x-jet-dropdown-link href="{{ route('events.index') }}"><i class="far fa-calendar-alt"></i></i>
+                                &nbsp;{{ __('Agenda') }}
+                            </x-jet-dropdown-link>
+
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                 <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
                                     {{ __('API Tokens') }}
@@ -232,19 +236,19 @@
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
         </div>
-		
+
 		<div class="pt-2 pb-3 space-y-1">
             <x-jet-responsive-nav-link href="{{ route('misclientes.index') }}" :active="request()->routeIs('misclientes.index')">
                 {{ __('Mis Clientes') }}
             </x-jet-responsive-nav-link>
         </div>
-		
+
 		<div class="pt-2 pb-3 space-y-1">
             <x-jet-responsive-nav-link href="{{ route('mispropietarios.index') }}" :active="request()->routeIs('mispropietarios.index')">
                 {{ __('Mis Propietarios') }}
             </x-jet-responsive-nav-link>
         </div>
-				
+
 		<div class="pt-2 pb-3 space-y-1">
             <x-jet-responsive-nav-link href="{{ route('mispropiedades.index') }}" :active="request()->routeIs('mispropiedades.index')">
                 {{ __('Mis Propiedades') }}

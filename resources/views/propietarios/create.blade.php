@@ -19,7 +19,7 @@
         {{-- Nombre --}}
         <div class="mb-4">
             <label for="name" class="form-label">Nombre</label>
-            <input name="name" type="text" class="form-control" id="name" aria-describedby="name"
+            <input name="name" type="text" class="form-control" id="name" aria-describedby="name" placeholder="Nombre"
                 value="{{ old('name', $propietario->name) }}">
             @error('name')
                 <small class="text-danger">{{ $message }}</small>
@@ -29,7 +29,7 @@
         {{-- Apellidos --}}
         <div class="mb-4">
             <label for="surname" class="form-label">Apellidos</label>
-            <input name="surname" type="text" class="form-control" id="surname" aria-describedby="surname"
+            <input name="surname" type="text" class="form-control" id="surname" aria-describedby="surname" placeholder="Apellidos"
                 value="{{ old('surname', $propietario->surname) }}">
             @error('surname')
                 <small class="text-danger">{{ $message }}</small>
@@ -56,7 +56,7 @@
         {{-- Email --}}
         <div class="mb-4">
             <label for="email" class="form-label">Email</label>
-            <input name="email" type="email" class="form-control" id="email" aria-describedby="email"
+            <input name="email" type="email" class="form-control" id="email" aria-describedby="email" placeholder="Email"
                 value="{{ old('email', $propietario->email) }}">
             @error('email')
                 <small class="text-danger">{{ $message }}</small>
@@ -66,7 +66,7 @@
         {{-- Teléfono --}}
         <div class="mb-4">
             <label for="telefono" class="form-label">Teléfono</label>
-            <input name="telefono" type="text" class="form-control" id="telefono" aria-describedby="telefono"
+            <input name="telefono" type="text" class="form-control" id="telefono" aria-describedby="telefono" placeholder="Teléfono"
                 value="{{ old('telefono', $propietario->telefono) }}">
             @error('telefono')
                 <small class="text-danger">{{ $message }}</small>
@@ -76,7 +76,7 @@
         {{-- DNI --}}
         <div class="mb-4">
             <label for="dni" class="form-label">DNI</label>
-            <input name="dni" type="text" class="form-control" id="dni" aria-describedby="dni"
+            <input name="dni" type="text" class="form-control" id="dni" aria-describedby="dni" placeholder="DNI"
                 value="{{ old('dni', $propietario->dni) }}">
             @error('dni')
                 <small class="text-danger">{{ $message }}</small>
@@ -108,7 +108,7 @@
         {{-- Direccion --}}
         <div class="mb-4">
             <label for="direccion" class="form-label">Dirección</label>
-            <input name="direccion" type="text" class="form-control" id="direccion" aria-describedby="direccion"
+            <input name="direccion" type="text" class="form-control" id="direccion" aria-describedby="direccion" placeholder="Dirección"
                 value="{{ old('direccion', $propietario->direccion) }}">
             @error('direccion')
                 <small class="text-danger">{{ $message }}</small>
@@ -118,7 +118,7 @@
         {{-- Ciudad --}}
         <div class="mb-4">
             <label for="ciudad" class="form-label">Ciudad</label>
-            <input name="ciudad" type="text" class="form-control" id="ciudad" aria-describedby="ciudad"
+            <input name="ciudad" type="text" class="form-control" id="ciudad" aria-describedby="ciudad" placeholder="Ciudad"
                 value="{{ old('ciudad', $propietario->ciudad) }}">
             @error('ciudad')
                 <small class="text-danger">{{ $message }}</small>
@@ -128,7 +128,7 @@
         {{-- Provincia --}}
         <div class="mb-4">
             <label for="provincia" class="form-label">Provincia</label>
-            <input name="provincia" type="text" class="form-control" id="provincia" aria-describedby="provincia"
+            <input name="provincia" type="text" class="form-control" id="provincia" aria-describedby="provincia" placeholder="Provincia"
                 value="{{ old('provincia', $propietario->provincia) }}">
             @error('provincia')
                 <small class="text-danger">{{ $message }}</small>
@@ -146,7 +146,7 @@
             @enderror
         </div>
 
-        <button type="submit" class="btn btn-success btn-sm" style="color: white;"><i class="fas fa-plus-circle"></i> Crear</button>
+        <button type="submit" class="" style="color:black;"><img src="{{asset('images/sav.png')}}"  alt="deletelogo"  style="float: left;" >&nbsp;&nbsp;</button>
     </form>
     <br><br>
 </x-app-layout>

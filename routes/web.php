@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\MiclienteController;
 use App\Http\Controllers\MiordeneController;
@@ -56,3 +57,5 @@ Route::get('home/login', [WebController::class, 'login'])->name('vista.login');
 Route::get('home/contacto', function(){
     return view('vista-cliente.contact');
 })->name('vista.contacto');
+
+Route::resource('dashboard/events', EventController::class)->middleware('checkRole1');

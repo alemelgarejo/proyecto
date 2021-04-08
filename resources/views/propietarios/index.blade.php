@@ -10,7 +10,7 @@
             {{ session('status') }}
         </div>
     @endif
-    <a class="btn btn-success btn-sm mt-4" style="margin-left:2.5%;" href="{{ route('propietarios.create') }}" ><i class="fas fa-plus-circle"></i> Añadir</a><br><br>
+    <a href="{{ route('propietarios.create') }}" type="button" style=" margin: 20px 0px 0px 45px; color:black;"><img src="{{asset('images/add-file.png')}}"  alt="deletelogo"  style="float: left; " ></a><br><br>
 
     <div style="width:95%; margin: 0 auto;">
         <table id="propietariosTable" class="table table-striped table-bordered dt-responsive" width="100%" style="margin: 0 auto;">
@@ -59,12 +59,12 @@
                         <td>{{ \Carbon\Carbon::parse($propietario->created_at)->format('d/m/Y') }}</td>
                         <td>{{ \Carbon\Carbon::parse($propietario->updated_at)->format('d/m/Y') }}</td>
                         <td>
-                            <a class="btn btn-info btn-sm mt-1" style="color: white;" href="{{ route('propietarios.show', $propietario->id) }}"><i class="fas fa-info"></i></a>
-                            <a class="btn btn-warning btn-sm mt-1" style="color: white;"
-                                href="{{ route('propietarios.edit', $propietario->id) }}"><i class="fas fa-edit"></i></a>
+                            <a href="{{ route('propietarios.show', $propietario->id) }}"><img src="{{asset('images/information.png')}}" style="float: left;margin: 35px 0px 15px 10px;" alt="infologo"></a>
+                            <a href="{{ route('propietarios.edit', $propietario->id) }}"><img src="{{asset('images/consent.png')}}" alt="editlogo"  style="float: left; margin: 35px 0px 15px 10px;" ></a>
+
                                 <main x-data="{ 'isDialogOpen': false }" @keydown.escape="isDialogOpen = false">
                                     <section>
-                                        <button type="button" class="btn btn-danger btn-sm mt-1" @click="isDialogOpen = true"><i class="fas fa-trash-alt"></i></button>
+                                        <button type="button" @click="isDialogOpen = true"><img src="{{asset('images/recycle-bin.png')}}" alt="deletelogo"  style="float: left; margin: 12px 0px 15px 5px;" ></button>
                                         <!-- overlay -->
                                         <div class="overflow-full" style="background-color: rgba(0,0,0,0.5)" x-show="isDialogOpen" :class="{ 'absolute inset-0 z-10 flex items-start justify-center': isDialogOpen }">
                                             <!-- dialog -->
@@ -90,7 +90,7 @@
                                                             <form id="formDelete" action="{{ route('propietarios.destroy', $propietario->id) }}" data-action="{{ route('propietarios.destroy',  $propietario->id) }}" method="POST">
                                                                 @method('DELETE')
                                                                 @csrf
-                                                                <button type="submit" class="btn btn-danger btn-sm">Borrar <i class="fas fa-trash-alt"></i></button>
+                                                                <button type="submit">Eliminar <img src="{{asset('images/recycle-bin.png')}}" alt="deletelogo"  style="float: left; margin: 0px 0px 15px 5px;" ></button>
                                                             </form>
                                                         </div>
                                                     </ul>

@@ -23,7 +23,13 @@
                   <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
                   <div class="mt-3">
                     <h4>{{ $cliente->surname }}, {{$cliente->name}}</h4>
-                    <p class="text-secondary mb-1">Asesorado por: {{$cliente->user->surname}}, {{$cliente->user->name}}</p>
+                    <p class="text-secondary mb-1">Asesorado por:
+                        @if ($cliente->user)
+                            {{$cliente->user->surname}}, {{$cliente->user->name}}
+                        @elseif (!$cliente->user)
+                            La persona encargada ya no trabaja aquí.
+                        @endif
+                        </p>
                   </div>
                 </div>
               </div>
@@ -38,11 +44,12 @@
                     </div>
                     <div class="col-sm-9 text-secondary">
                         <a class="" style="float: left; color: black;"
-                        href="{{ route('clientes.edit', $cliente->id) }}"><img src="{{asset('images/consent.png')}}" alt="editlogo"  style="float: left; margin: 0px 0px 0px 10px;" > Actualizar</a>
-						<a class="" style="float: left; color: black;" href="{{ route('ordenes.create') }}"><i style="float: left; margin: 0px 0px 0px 10px;" class="fas fa-sort"></i> Crear órden</a>
+                        href="{{ route('clientes.edit', $cliente->id) }}"><img src="{{asset('images/consent.png')}}" alt="editlogo"  style="float: left; margin: 0px 0px 0px 10px;" > </a>&nbsp;&nbsp;
+						<a class="" style="float: left; color: black;" href="{{ route('ordenes.create') }}"><img src="{{asset('images/checklist.png')}}" alt="editlogo"  style="float: left; margin: 0px 0px -10px 10px; width:70%;" > </a>&nbsp;&nbsp;
+
                         <main x-data="{ 'isDialogOpen': false }" @keydown.escape="isDialogOpen = false"  style="float: left; color: black;">
                             <section>
-                                <button type="button" @click="isDialogOpen = true"><img src="{{asset('images/recycle-bin.png')}}" alt="deletelogo" style="float: left; margin: 0px 0px 0px 10px; color: black;" > Eliminar</button>
+                                <button type="button" @click="isDialogOpen = true"><img src="{{asset('images/recycle-bin.png')}}" alt="deletelogo" style="float: left; margin: 0px 0px 0px 5px; color: black;" > &nbsp;&nbsp;</button>
                                 <!-- overlay -->
                                 <div class="overflow-full" style="background-color: rgba(0,0,0,0.5)" x-show="isDialogOpen" :class="{ 'absolute inset-0 z-10 flex items-start justify-center': isDialogOpen }">
                                     <!-- dialog -->
@@ -192,8 +199,8 @@
                   </div>
                 </div>
                 <hr>
-                <a class="btn btn-secondary btn-sm mt-1" style="color: white;"
-                        href="{{ route('clientes.index') }}"><i class="fas fa-undo-alt"></i> Clientes</a>
+                <a class="" style=""
+                        href="{{ route('clientes.index') }}"><img src="{{asset('images/previous.png')}}"  alt="deletelogo"  style="float: left; color: black;" > </a>
               </div>
             </div>
             </div>

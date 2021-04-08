@@ -51,7 +51,7 @@
                         <td style="display: inline-block !important; ">
                             <a href="{{ route('propiedades.show', $propiedade->id) }}"><img src="{{asset('images/information.png')}}" style="float: left;" alt="infologo"></a>
                             <a href="{{ route('propiedades.edit', $propiedade->id) }}"><img src="{{asset('images/consent.png')}}" alt="editlogo"  style="float: left; margin: 0px 0px 15px 10px;" ></a>
-                            <a href="{{ route('files.index2', $propiedade->id) }}"><img src="{{asset('images/image.png')}}" alt="editlogo"  style="float: left; margin: 0px 0px 15px 10px;" ></a>
+                            <a href="{{ route('files.index2', $propiedade->id) }}"><img src="{{asset('images/image.png')}}" alt="editlogo"  style="float: left; margin: 0px 0px 15px 10px; width:13%;" ></a>
                             <a href="{{ route('files.create2', $propiedade->id) }}"><img src="{{asset('images/add.png')}}" alt="editlogo"  style="float: left; margin: 0px 0px 15px 10px;" ></a>
                                 <main x-data="{ 'isDialogOpen': false }" @keydown.escape="isDialogOpen = false">
                                     <section>

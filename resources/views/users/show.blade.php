@@ -37,9 +37,46 @@
                     <h6 class="mb-0">Gestión</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                    <a class="btn btn-warning btn-sm mt-1" style="color: white;"
-                                href="{{ route('users.edit', $user->id) }}"><i class="fas fa-edit"></i> Actualizar</a>
-                                <button class="btn btn-danger btn-sm mt-1" onclick="document.getElementById('id01').style.display='block'"><i class="fas fa-trash-alt"></i> Eliminar</button>
+                    <a class="" style="color: black; float: left;"
+                        href="{{ route('users.edit', $user->id) }}"><img src="{{asset('images/consent.png')}}" alt="editlogo"  style="float: left; margin: 0px 0px 0px 10px;" ></a>&nbsp;&nbsp;
+                        <main x-data="{ 'isDialogOpen': false }" @keydown.escape="isDialogOpen = false" style="float: left; color: black;">
+                            <section >
+                                <button type="button" @click="isDialogOpen = true"><img src="{{asset('images/recycle-bin.png')}}" alt="deletelogo" style="float: left; margin: 0px 0px 0px 10px; color: black;" ></button>
+                                <!-- overlay -->
+                                <div class="overflow-full" style="background-color: rgba(0,0,0,0.5)" x-show="isDialogOpen" :class="{ 'absolute inset-0 z-10 flex items-start justify-center': isDialogOpen }">
+                                    <!-- dialog -->
+                                    <div class="bg-white shadow-2xl m-4 sm:m-8" x-show="isDialogOpen" @click.away="isDialogOpen = false">
+                                        <div class="flex justify-between items-center border-b p-2 text-xl">
+                                            <h6 class="text-xl font-bold">Usuario: {{$user->name}} {{$user->surname}}</h6>
+                                            <button type="button" @click="isDialogOpen = false">✖</button>
+                                        </div>
+                                        <div class="p-2">
+                                            <!-- content -->
+                                            <h4 class="font-bold">¿Desea eliminar éste usuario?</h4>
+                                            <aside class="max-w-lg mt-4 p-4 bg-yellow-100 border border-yellow-500">
+                                                <p> - Nombre: {{$user->name}}, <br>
+                                                    - Apellidos: {{$user->surname}}, <br>
+                                                    - Email: {{$user->email}}, <br>
+                                                    - DNI: {{$user->dni}}, <br>
+                                                    - Estado: {{$user->estado}}, <br>
+                                                    - Rol: {{$user->role->name}}, <br>
+                                                </p>
+                                                <p>⚠ Asegurate de haber seleccionado los datos correctos.</p>
+                                            </aside>
+                                            <ul class="bg-gray-100 border m-8 px-4">
+                                                <div class="modal-footer">
+                                                    <form id="formDelete" action="{{ route('users.destroy', $user->id) }}" data-action="{{ route('users.destroy',  $user->id) }}" method="POST">
+                                                        @method('DELETE')
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-danger btn-sm">Borrar <i class="fas fa-trash-alt"></i></button>
+                                                    </form>
+                                                </div>
+                                            </ul>
+                                        </div>
+                                    </div><!-- /dialog -->
+                                </div><!-- /overlay -->
+                            </section>
+                        </main>
                   </div>
                 </div>
                 <hr>
@@ -115,8 +152,8 @@
                 </div>
               </div>
               <hr>
-              <a class="btn btn-secondary btn-sm mt-1" style="color: white;"
-                      href="{{ route('users.index') }}"><i class="fas fa-undo-alt"></i> Usuarios</a>
+              <a class="" style=""
+                        href="{{ route('users.index') }}"><img src="{{asset('images/previous.png')}}"  alt="deletelogo"  style="float: left; color: black;" > </a>
             </div>
           </div>
           </div>

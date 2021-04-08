@@ -47,12 +47,11 @@
                         <td>{{ \Carbon\Carbon::parse($user->created_at)->format('d/m/Y') }}</td>
                         <td>{{ \Carbon\Carbon::parse($user->updated_at)->format('d/m/Y') }}</td>
                         <td>
-                            <a class="btn btn-info btn-sm mt-1" style="color: white;" href="{{ route('users.show', $user->id) }}"><i class="fas fa-info"></i></a>
-                            <a class="btn btn-warning btn-sm mt-1" style="color: white;"
-                                href="{{ route('users.edit', $user->id) }}"><i class="fas fa-edit"></i></a>
+                            <a href="{{ route('users.show', $user->id) }}"><img src="{{asset('images/information.png')}}" style="float: left;" alt="infologo"></a>
+                            <a href="{{ route('users.edit', $user->id) }}"><img src="{{asset('images/consent.png')}}" alt="editlogo"  style="float: left; margin: 0px 0px 15px 10px;" ></a>
                             <main x-data="{ 'isDialogOpen': false }" @keydown.escape="isDialogOpen = false">
                                 <section>
-                                    <button type="button" class="btn btn-danger btn-sm mt-1" @click="isDialogOpen = true"><i class="fas fa-trash-alt"></i></button>
+                                    <button type="button" @click="isDialogOpen = true"><img src="{{asset('images/recycle-bin.png')}}" alt="deletelogo"  style="float: left; margin: 0px 0px 15px 5px;" ></button>
                                     <!-- overlay -->
                                     <div class="overflow-full" style="background-color: rgba(0,0,0,0.5)" x-show="isDialogOpen" :class="{ 'absolute inset-0 z-10 flex items-start justify-center': isDialogOpen }">
                                         <!-- dialog -->

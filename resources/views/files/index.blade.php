@@ -13,7 +13,7 @@
         </div>
     @endif
     <br>
-    <a class="" style="color: black; float: left; margin-left: 20%;" href="{{ route('files.create2', $propiedade->id) }}"><img src="{{asset('images/add.png')}}" alt="editlogo"  style="float: left; margin: 0px 0px 0px 10px;" ></a>
+    <a class="" style="color: black; float: left; margin-left: 20%;" href="{{ route('files.create2', $propiedade->id) }}"><img src="{{asset('images/photo.png')}}" alt="editlogo"  style="float: left; margin: 0px 0px 0px 10px; width:40%;" ></a>
 
     <section class="text-gray-600 body-font">
         <div class="container px-5 py-24 mx-auto">

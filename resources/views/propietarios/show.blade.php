@@ -41,9 +41,45 @@
                     <h6 class="mb-0">Gestión</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                    <a class="btn btn-warning btn-sm mt-1" style="color: white;"
-                        href="{{ route('propietarios.edit', $propietario->id) }}"><i class="fas fa-edit"></i> Actualizar</a>
-                        <button class="btn btn-danger btn-sm mt-1" onclick="document.getElementById('id01').style.display='block'"><i class="fas fa-trash-alt"></i> Eliminar</button>
+                    <a class="" style="color: black; float: left;"
+                        href="{{ route('propietarios.edit', $propietario->id) }}"><img src="{{asset('images/consent.png')}}" alt="editlogo"  style="float: left; margin: 0px 0px 0px 10px;" ></a>&nbsp;&nbsp;
+                        <main x-data="{ 'isDialogOpen': false }" @keydown.escape="isDialogOpen = false" style="float: left; color: black;">
+                            <section >
+                                <button type="button" @click="isDialogOpen = true"><img src="{{asset('images/recycle-bin.png')}}" alt="deletelogo" style="float: left; margin: 0px 0px 0px 10px; color: black;" ></button>
+                                <!-- overlay -->
+                                <div class="overflow-full" style="background-color: rgba(0,0,0,0.5)" x-show="isDialogOpen" :class="{ 'absolute inset-0 z-10 flex items-start justify-center': isDialogOpen }">
+                                    <!-- dialog -->
+                                    <div class="bg-white shadow-2xl m-4 sm:m-8" x-show="isDialogOpen" @click.away="isDialogOpen = false">
+                                        <div class="flex justify-between items-center border-b p-2 text-xl">
+                                            <h6 class="text-xl font-bold">Propietario: {{$propietario->name}} {{$propietario->surname}}</h6>
+                                            <button type="button" @click="isDialogOpen = false">✖</button>
+                                        </div>
+                                        <div class="p-2">
+                                            <!-- content -->
+                                            <h4 class="font-bold">¿Desea eliminar éste propietario?</h4>
+                                            <aside class="max-w-lg mt-4 p-4 bg-yellow-100 border border-yellow-500">
+                                                <p> - Nombre: {{$propietario->name}}, <br>
+                                                    - Apellidos: {{$propietario->surname}}, <br>
+                                                    - Email: {{$propietario->email}}, <br>
+                                                    - DNI: {{$propietario->dni}}, <br>
+                                                    - Estado: {{$propietario->estado}}, <br>
+                                                </p>
+                                                <p>⚠ Asegurate de haber seleccionado los datos correctos.</p>
+                                            </aside>
+                                            <ul class="bg-gray-100 border m-8 px-4">
+                                                <div class="modal-footer">
+                                                    <form id="formDelete" action="{{ route('propietarios.destroy', $propietario->id) }}" data-action="{{ route('propietarios.destroy',  $propietario->id) }}" method="POST">
+                                                        @method('DELETE')
+                                                        @csrf
+                                                        <button type="submit">Eliminar <img src="{{asset('images/recycle-bin.png')}}" alt="deletelogo"  style="float: left; margin: 0px 0px 15px 5px;" ></button>
+                                                    </form>
+                                                </div>
+                                            </ul>
+                                        </div>
+                                    </div><!-- /dialog -->
+                                </div><!-- /overlay -->
+                            </section>
+                        </main>
                   </div>
                 </div>
                 <hr>
@@ -155,8 +191,8 @@
                 </div>
               </div>
               <hr>
-              <a class="btn btn-secondary btn-sm mt-1" style="color: white;"
-                      href="{{ route('propietarios.index') }}"><i class="fas fa-undo-alt"></i> Propietarios</a>
+              <a class="" style=""
+                        href="{{ route('propietarios.index') }}"><img src="{{asset('images/previous.png')}}"  alt="deletelogo"  style="float: left; color: black;" > </a>
             </div>
           </div>
           </div>
@@ -164,26 +200,5 @@
       </div>
       </div>
       <br><br>
-      <div id="id01" class="modal" style="width:300px; margin-top:15%; margin-left:39%;  margin-right:39%;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalLabel"></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>¿Desea eliminar el registro?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" onclick="document.getElementById('id01').style.display='none'"  data-dismiss="modal"><i class="fas fa-times"></i> Close</button>
-                <form id="formDelete" action="{{ route('propietarios.destroy', $propietario->id) }}"
-                    data-action="{{ route('propietarios.destroy',  $propietario->id) }}" method="POST">
-                    @method('DELETE')
-                    @csrf
-                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Eliminar</button>
-                </form>
-            </div>
-        </div>
-      </div>
+
 </x-app-layout>

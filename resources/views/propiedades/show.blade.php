@@ -45,9 +45,9 @@
                         <a class="" style="color: black; float: left;"
                         href="{{ route('propiedades.edit', $propiedade->id) }}"><img src="{{asset('images/consent.png')}}" alt="editlogo"  style="float: left; margin: 0px 0px 0px 10px;" ></a>&nbsp;&nbsp;
                         <a class="" style="color: black; float: left;"
-                        href="{{ route('files.index2', $propiedade->id) }}"><img src="{{asset('images/image.png')}}" alt="editlogo"  style="float: left; margin: 0px 0px 0px 10px;" ></a>&nbsp;&nbsp;
-                        <a class="" style="color: black; float: left;"
                         href="{{ route('files.create2', $propiedade->id) }}"><img src="{{asset('images/add.png')}}" alt="editlogo"  style="float: left; margin: 0px 0px 0px 10px;" ></a>&nbsp;&nbsp;
+                        <a class="" style="color: black; float: left;"
+                        href="{{ route('files.index2', $propiedade->id) }}"><img src="{{asset('images/image.png')}}" alt="editlogo"  style="float: left; margin: 2px 0px 0px 10px;width:30%;" ></a>&nbsp;&nbsp;
 
                         <main x-data="{ 'isDialogOpen': false }" @keydown.escape="isDialogOpen = false" style="float: left; color: black;">
                             <section >
@@ -509,8 +509,8 @@
                   </div>
                 </div>
                 <hr>
-                <a class="btn btn-secondary btn-sm mt-1" style="color: white;"
-                        href="{{ route('propiedades.index') }}"><i class="fas fa-undo-alt"></i> Propiedades</a>
+                <a class="" style=""
+                        href="{{ route('propiedades.index') }}"><img src="{{asset('images/previous.png')}}"  alt="deletelogo"  style="float: left; color: black;" > </a>
               </div>
             </div>
             </div>
@@ -518,26 +518,4 @@
         </div>
       </div>
 
-      <div id="id01" class="modal" style="width:300px; margin-top:15%; margin-left:39%;  margin-right:39%;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalLabel"></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>¿Desea eliminar el registro?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" onclick="document.getElementById('id01').style.display='none'"  data-dismiss="modal"><i class="fas fa-times"></i> Close</button>
-                <form id="formDelete" action="{{ route('propiedades.destroy', $propiedade->id) }}"
-                    data-action="{{ route('propiedades.destroy',  $propiedade->id) }}" method="POST">
-                    @method('DELETE')
-                    @csrf
-                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Eliminar</button>
-                </form>
-            </div>
-        </div>
-      </div>
 </x-app-layout>
