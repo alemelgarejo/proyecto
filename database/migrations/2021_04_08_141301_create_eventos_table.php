@@ -22,6 +22,7 @@ class CreateEventosTable extends Migration
             $table->string('textColor', 20)->nullable();
             $table->dateTime('start')->nullable();
             $table->dateTime('end')->nullable();
+            $table->timestamps();
         });
     }
 

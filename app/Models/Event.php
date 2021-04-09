@@ -11,4 +11,8 @@ class Event extends Model
     protected  $primaryKey = 'id';
     protected $guarded = [];
     use HasFactory;
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }

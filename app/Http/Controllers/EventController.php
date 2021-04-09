@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
@@ -35,7 +37,15 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $sesion = session()->getId();
+        $user = DB::table('sessions')->where('sessions.id', '=', $sesion)->select('sessions.user_id')->get();
+        $user1 = json_decode(json_encode($user[0]), true);
+        $userFinal = $user1['user_id'];
+        $datosEvento=request()->except(['_token', '_method']);
+        $replacements = array('user_id' => $userFinal);
+        $data = array_replace($datosEvento, $replacements);
+        Event::create($data);
+        print_r($data);
     }
 
     /**
@@ -44,9 +54,13 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function show(Event $event)
+    public function show(/* Event $event */)
     {
-        //
+        $sesion = session()->getId();
+        $data['events'] = Event::join('sessions', 'sessions.user_id', '=', 'eventos.user_id')->where('sessions.id', '=', $sesion)->select('eventos.*')->get();
+        //$data['events'] = Event::all();
+        return response()->json($data['events']);
+
     }
 
     /**
@@ -69,7 +83,15 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        //
+        $sesion = session()->getId();
+        $user = DB::table('sessions')->where('sessions.id', '=', $sesion)->select('sessions.user_id')->get();
+        $user1 = json_decode(json_encode($user[0]), true);
+        $userFinal = $user1['user_id'];
+        $datosEvento=request()->except(['_token', '_method']);
+        $replacements = array('user_id' => $userFinal);
+        $data = array_replace($datosEvento, $replacements);
+        $respuesta = Event::where('id', '=', $event->id)->update($data);
+        //return response()->json($respuesta);
     }
 
     /**
@@ -80,6 +102,7 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        //
+        $event->delete();
+        //return response()->json($event);
     }
 }
