@@ -33,8 +33,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = Role::pluck('id', 'name');
-        return view('users.create', ['user' => new User(), 'roles' => $roles]);
+        // $roles = Role::pluck('id', 'name');
+        // return view('users.create', ['user' => new User(), 'roles' => $roles]);
     }
 
     /**
@@ -45,12 +45,12 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        User::create($request->validated([
-                'password' => Hash::make($request['password']),
-            ] )
+        // User::create($request->validated([
+        //         'password' => Hash::make($request['password']),
+        //     ] )
 
-        );
-        return redirect('dashboard/users')->with('status', 'Usuario creado con éxito.');
+        // );
+        // return redirect('dashboard/users')->with('status', 'Usuario creado con éxito.');
     }
 
     /**

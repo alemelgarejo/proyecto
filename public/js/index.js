@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
+		themeSystem: 'bootstrap',
         plugins: [ 'dayGrid', 'interaction', 'timeGrid', 'list' ],
 
         header:{
@@ -12,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         customButtons: {
             /* Miboton:{
-                text:'Botón',
+                text:'Botรณn',
                 click:function(){
                     $('#myCalendar').modal('toggle');
                 },
