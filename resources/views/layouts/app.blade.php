@@ -74,38 +74,6 @@
                 {{ $slot }}
             </main>
             <br>
-            <main x-data="{ 'isDialogOpen': false }" @keydown.escape="isDialogOpen = false">
-                <section>
-                    <a href="#heading" type="button" style="margin: -2px 0px 15px 45px; color:black;" @click="isDialogOpen = true"><img src="{{asset('images/info.png')}}" alt="deletelogo"  style="float: left; width:25%;" >&nbsp;&nbsp;Iconos</a>
-                    <!-- overlay -->
-                    <div class="overflow-full" style="background-color: rgba(0,0,0,0.5)" x-show="isDialogOpen" :class="{ 'absolute inset-0 z-10 flex items-start justify-center': isDialogOpen }">
-                        <!-- dialog -->
-                        <div class="bg-white shadow-2xl m-4 sm:m-8" x-show="isDialogOpen" @click.away="isDialogOpen = false">
-                            <div class="flex justify-between items-center border-b p-2 text-xl">
-                                <h6 class="text-xl font-bold">Significado de los iconos</h6>
-                                <button type="button" @click="isDialogOpen = false">✖</button>
-                            </div>
-                            <div class="p-2">
-                                <!-- content -->
-                                <aside class="max-w-lg m-2 p-4 bg-yellow-100 border border-yellow-500">
-                                    <p>&nbsp;&nbsp;Más información <img src="{{asset('images/information.png')}}" style="float: left;" alt="infologo"></p>
-                                    <p>&nbsp;&nbsp;Google map <img src="{{asset('images/map.png')}}" style="float: left;" alt="infologo"></p>
-                                    <p>&nbsp;&nbsp;Actualizar <img src="{{asset('images/consent.png')}}" style="float: left;" alt="infologo"></p>
-                                    <p>&nbsp;&nbsp;Eliminar <img src="{{asset('images/recycle-bin.png')}}" style="float: left;" alt="infologo"></p>
-                                    <p>&nbsp;&nbsp;Ver imágenes <img src="{{asset('images/image.png')}}" style="float: left; width:13%;" alt="infologo"></p>
-                                    <p>&nbsp;&nbsp;Añadir elemento <img src="{{asset('images/add-file.png')}}" style="float: left;" alt="infologo"></p>
-                                    <p>&nbsp;&nbsp;Guardar información <img src="{{asset('images/sav.png')}}" style="float: left;width:13%;" alt="infologo "></p>
-                                    <p>&nbsp;&nbsp;Añadir imágenes <img src="{{asset('images/photo.png')}}" style="float: left;width:13%;" alt="infologo"></p>
-                                    <p>&nbsp;&nbsp;Añadir órden <img src="{{asset('images/checklist.png')}}" style="float: left;width:13%;" alt="infologo"></p>
-                                    <p>&nbsp;&nbsp;Ir atrás <img src="{{asset('images/previous.png')}}" style="float: left;width:13%;" alt="infologo"></p>
-                                </aside>
-
-                            </div>
-                        </div><!-- /dialog -->
-                    </div><!-- /overlay -->
-                </section>
-            </main>
-
 
             <!--Page footer-->
             <footer class="text-gray-600 body-font">

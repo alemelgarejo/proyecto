@@ -145,7 +145,7 @@
             @enderror
         </div>
 
-        <button type="submit" class="" style="color:black;"><img src="{{asset('images/sav.png')}}"  alt="deletelogo"  style="float: left;" >&nbsp;&nbsp;</button>
+        <button type="submit" class="btn btn-secondary btn-sm">Editar&nbsp;&nbsp;<i class="fas fa-edit"></i></button>
     </form>
     <br><br>
 </x-app-layout>

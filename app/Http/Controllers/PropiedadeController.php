@@ -17,8 +17,9 @@ class PropiedadeController extends Controller
      */
     public function index()
     {
-        $propiedades = Propiedade::all();
-        return view('propiedades.index', compact('propiedades'));
+        return view('propiedades.index', [
+			'propiedades'  => Propiedade::all()
+		]);
     }
 
     /**
@@ -28,8 +29,10 @@ class PropiedadeController extends Controller
      */
     public function create()
     {
-        $propietarios = Propietario::pluck('id', 'name', 'surname');
-        return view('propiedades.create', ['propiedade' => new Propiedade(), 'propietarios' => $propietarios]);
+        return view('propiedades.create', [
+			'propiedade' => Propiedade::make(),
+			'propietarios' => Propietario::pluck('id', 'name', 'surname')
+		]);
     }
 
     /**
@@ -64,8 +67,10 @@ class PropiedadeController extends Controller
      */
     public function edit(Propiedade $propiedade)
     {
-        $propietarios = Propietario::pluck('id', 'name', 'surname');
-        return view('propiedades.edit', ['propiedade' => $propiedade, 'propietarios' => $propietarios]);
+        return view('propiedades.edit', [
+			'propiedade' => $propiedade, 
+			'propietarios' => Propietario::pluck('id', 'name', 'surname')
+		]);
     }
 
     /**
@@ -77,7 +82,7 @@ class PropiedadeController extends Controller
      */
     public function update(UpdatePropiedadeRequest $request, Propiedade $propiedade)
     {
-        $propiedade->update($request->all());
+        $propiedade->update($request->all()/* + ['user_id' => auth()->id()]*/);
         return redirect('dashboard/propiedades')->with('status', 'Propiedad actualizada con éxito.');
     }
 

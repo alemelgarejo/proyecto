@@ -441,7 +441,8 @@
                 <small class="text-danger">{{ $message }}</small>
             @enderror
         </div>
-        <button type="submit" class="btn btn-success btn-sm" style="color: white;"><i class="fas fa-plus-circle"></i> Crear</button>
+        <button type="submit" class="btn btn-secondary btn-sm">Crear&nbsp;&nbsp;<i class="fas fa-plus-circle"></i></button>
     </form>
+
     <br><br>
 </x-app-layout>

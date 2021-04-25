@@ -10,7 +10,7 @@
             {{ session('status') }}
         </div>
     @endif
-    <a href="{{ route('misclientes.create') }}" type="button" style=" margin: 20px 0px 0px 45px; color:black;"><img src="{{asset('images/add-file.png')}}"  alt="deletelogo"  style="float: left; " ></a><br><br>
+    <a class="btn btn-secondary btn-sm ml-5 mt-3" href="{{ route('misclientes.create') }}" type="button">Crear&nbsp;&nbsp;<i class="fas fa-plus-circle"></i></a><br><br>
     <div style="width:95%; margin: 0 auto;">
         <table id="clientesTable" class="table table-striped table-bordered dt-responsive" width="100%" style="margin: 0 auto;">
             <thead>
@@ -28,7 +28,6 @@
                     <td>Ciudad</td>
                     <td>Provincia</td>
                     <td>Observaciones</td>
-                    <td>Creado</td>
                     <td>Actualizado</td>
                     <td>Acciones</td>
                 </tr>
@@ -55,49 +54,11 @@
                         <td>{{ $miscliente->ciudad }}</td>
                         <td>{{ $miscliente->provincia }}</td>
                         <td>{{ $miscliente->observaciones }}</td>
-                        <td>{{ \Carbon\Carbon::parse($miscliente->created_at)->format('d/m/Y') }}</td>
                         <td>{{ \Carbon\Carbon::parse($miscliente->update_at)->format('d/m/Y') }}</td>
                         <td>
-                            <a href="{{ route('misclientes.show', $miscliente->id) }}"><img src="{{asset('images/information.png')}}" style="float: left;margin: 35px 0px 15px 10px;" alt="infologo"></a>
-                            <a href="{{ route('misclientes.edit', $miscliente->id) }}"><img src="{{asset('images/consent.png')}}" alt="editlogo"  style="float: left; margin: 35px 0px 15px 10px;" ></a>
-                            <a href="{{ route('ordenes.create') }}"><img src="{{asset('images/checklist.png')}}" alt="editlogo"  style="float: left; margin: 35px 0px 15px 10px; width:15%;" ></a>
-                            <main x-data="{ 'isDialogOpen': false }" @keydown.escape="isDialogOpen = false">
-                                <section>
-                                    <button type="button" @click="isDialogOpen = true"><img src="{{asset('images/recycle-bin.png')}}" alt="deletelogo"  style="float: left; margin: 12px 0px 15px 5px;" ></button>
-                                    <!-- overlay -->
-                                    <div class="overflow-full" style="background-color: rgba(0,0,0,0.5)" x-show="isDialogOpen" :class="{ 'absolute inset-0 z-10 flex items-start justify-center': isDialogOpen }">
-                                        <!-- dialog -->
-                                        <div class="bg-white shadow-2xl m-4 sm:m-8" x-show="isDialogOpen" @click.away="isDialogOpen = false">
-                                            <div class="flex justify-between items-center border-b p-2 text-xl">
-                                                <h6 class="text-xl font-bold">Cliente: {{$miscliente->name}}, {{$miscliente->surname}}</h6>
-                                                <button type="button" @click="isDialogOpen = false">✖</button>
-                                            </div>
-                                            <div class="p-2">
-                                                <!-- content -->
-                                                <h4 class="font-bold">¿Desea eliminar éste cliente?</h4>
-                                                <aside class="max-w-lg mt-4 p-4 bg-yellow-100 border border-yellow-500">
-                                                    <p> - Nombre: {{$miscliente->name}}, <br>
-                                                        - Apellidos: {{$miscliente->surname}}, <br>
-                                                        - Email: {{$miscliente->email}}, <br>
-                                                        - DNI: {{$miscliente->dni}}, <br>
-                                                        - Estado: {{$miscliente->estado}}, <br>
-                                                    </p>
-                                                    <p>⚠ Asegurate de haber seleccionado los datos correctos.</p>
-                                                </aside>
-                                                <ul class="bg-gray-100 border m-8 px-4">
-                                                    <div class="modal-footer">
-                                                        <form id="formDelete" action="{{ route('misclientes.destroy', $miscliente->id) }}" data-action="{{ route('misclientes.destroy',  $miscliente->id) }}" method="POST">
-                                                            @method('DELETE')
-                                                            @csrf
-                                                            <button type="submit">Eliminar <img src="{{asset('images/recycle-bin.png')}}" alt="deletelogo"  style="float: left; margin: 0px 0px 15px 5px;" ></button>
-                                                        </form>
-                                                    </div>
-                                                </ul>
-                                            </div>
-                                        </div><!-- /dialog -->
-                                    </div><!-- /overlay -->
-                                </section>
-                            </main>
+                            <a data-toggle="tooltip" data-placement="top" title="Ver" href="{{route('misclientes.show', $miscliente->id)}}" style="color: gray;"><i class="fas fa-info-circle"></i></a>&nbsp;
+                            <a data-toggle="tooltip" data-placement="top" title="Editar" href="{{ route('misclientes.edit', $miscliente->id) }}" style="color: gray;"><i class="fas fa-edit"></i></a>&nbsp;
+                            <a data-toggle="tooltip" data-placement="top" title="Crear Órden" href="{{route('ordenes.create') }}" style="color: gray"><i class="fas fa-folder-plus"></i></a>
                         </td>
                     </tr>
                 @endforeach

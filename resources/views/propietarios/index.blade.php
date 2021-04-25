@@ -10,7 +10,7 @@
             {{ session('status') }}
         </div>
     @endif
-    <a href="{{ route('propietarios.create') }}" type="button" style=" margin: 20px 0px 0px 45px; color:black;"><img src="{{asset('images/add-file.png')}}"  alt="deletelogo"  style="float: left; " ></a><br><br>
+    <a class="btn btn-secondary btn-sm ml-5 mt-3" href="{{ route('propietarios.create') }}" type="button">Crear&nbsp;&nbsp;<i class="fas fa-plus-circle"></i></a><br><br>
 
     <div style="width:95%; margin: 0 auto;">
         <table id="propietariosTable" class="table table-striped table-bordered dt-responsive" width="100%" style="margin: 0 auto;">
@@ -29,7 +29,6 @@
                     <td>Ciudad</td>
                     <td>Provincia</td>
                     <td>Observaciones</td>
-                    <td>Creado</td>
                     <td>Actualizado</td>
                     <td>Acciones</td>
                 </tr>
@@ -56,50 +55,10 @@
                         <td>{{ $propietario->ciudad }}</td>
                         <td>{{ $propietario->provincia }}</td>
                         <td>{{ $propietario->observaciones }}</td>
-                        <td>{{ \Carbon\Carbon::parse($propietario->created_at)->format('d/m/Y') }}</td>
                         <td>{{ \Carbon\Carbon::parse($propietario->updated_at)->format('d/m/Y') }}</td>
                         <td>
-                            <a href="{{ route('propietarios.show', $propietario->id) }}"><img src="{{asset('images/information.png')}}" style="float: left;margin: 35px 0px 15px 10px;" alt="infologo"></a>
-                            <a href="{{ route('propietarios.edit', $propietario->id) }}"><img src="{{asset('images/consent.png')}}" alt="editlogo"  style="float: left; margin: 35px 0px 15px 10px;" ></a>
-
-                                <main x-data="{ 'isDialogOpen': false }" @keydown.escape="isDialogOpen = false">
-                                    <section>
-                                        <button type="button" @click="isDialogOpen = true"><img src="{{asset('images/recycle-bin.png')}}" alt="deletelogo"  style="float: left; margin: 12px 0px 15px 5px;" ></button>
-                                        <!-- overlay -->
-                                        <div class="overflow-full" style="background-color: rgba(0,0,0,0.5)" x-show="isDialogOpen" :class="{ 'absolute inset-0 z-10 flex items-start justify-center': isDialogOpen }">
-                                            <!-- dialog -->
-                                            <div class="bg-white shadow-2xl m-4 sm:m-8" x-show="isDialogOpen" @click.away="isDialogOpen = false">
-                                                <div class="flex justify-between items-center border-b p-2 text-xl">
-                                                    <h6 class="text-xl font-bold">Propietario: {{$propietario->name}} {{$propietario->surname}}</h6>
-                                                    <button type="button" @click="isDialogOpen = false">✖</button>
-                                                </div>
-                                                <div class="p-2">
-                                                    <!-- content -->
-                                                    <h4 class="font-bold">¿Desea eliminar éste propietario?</h4>
-                                                    <aside class="max-w-lg mt-4 p-4 bg-yellow-100 border border-yellow-500">
-                                                        <p> - Nombre: {{$propietario->name}}, <br>
-                                                            - Apellidos: {{$propietario->surname}}, <br>
-                                                            - Email: {{$propietario->email}}, <br>
-                                                            - DNI: {{$propietario->dni}}, <br>
-                                                            - Estado: {{$propietario->estado}}, <br>
-                                                        </p>
-                                                        <p>⚠ Asegurate de haber seleccionado los datos correctos.</p>
-                                                    </aside>
-                                                    <ul class="bg-gray-100 border m-8 px-4">
-                                                        <div class="modal-footer">
-                                                            <form id="formDelete" action="{{ route('propietarios.destroy', $propietario->id) }}" data-action="{{ route('propietarios.destroy',  $propietario->id) }}" method="POST">
-                                                                @method('DELETE')
-                                                                @csrf
-                                                                <button type="submit">Eliminar <img src="{{asset('images/recycle-bin.png')}}" alt="deletelogo"  style="float: left; margin: 0px 0px 15px 5px;" ></button>
-                                                            </form>
-                                                        </div>
-                                                    </ul>
-                                                </div>
-                                            </div><!-- /dialog -->
-                                        </div><!-- /overlay -->
-                                    </section>
-                                </main>
-
+                            <a data-toggle="tooltip" data-placement="top" title="Ver" href="{{ route('propietarios.show', $propietario->id) }}" style="color: gray;"><i class="fas fa-info-circle"></i></a>&nbsp;
+                            <a data-toggle="tooltip" data-placement="top" title="Editar" href="{{ route('propietarios.edit', $propietario->id) }}" style="color: gray;"><i class="fas fa-edit"></i></a>&nbsp;
                         </td>
                 </tr>
                 @endforeach

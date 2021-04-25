@@ -13,7 +13,7 @@
         </div>
     @endif
     <br>
-    <a class="" style="color: black; float: left; margin-left: 20%;" href="{{ route('files.create2', $propiedade->id) }}"><img src="{{asset('images/photo.png')}}" alt="editlogo"  style="float: left; margin: 0px 0px 0px 10px; width:40%;" ></a>
+    <a class="btn btn-secondary btn-sm ml-80 mt-3" data-toggle="tooltip" data-placement="top" title="Añadir imágenes" href="{{ route('files.create2', $propiedade->id) }}" ><i class="fas fa-image"></i></a>
 
     <section class="text-gray-600 body-font">
         <div class="container px-5 py-24 mx-auto">
@@ -32,7 +32,7 @@
                         <p class="leading-relaxed">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
                         <main x-data="{ 'isDialogOpen': false }" @keydown.escape="isDialogOpen = false" style="float: left; color: black;">
                             <section >
-                                <button type="button" @click="isDialogOpen = true"><img src="{{asset('images/recycle-bin.png')}}" alt="deletelogo" style="float: left; margin: 0px 0px 0px 10px; color: black;" > Eliminar</button>
+                                <button type="button" @click="isDialogOpen = true"><i class="fas fa-trash-alt" style="color: red"></i></button>
                                 <!-- overlay -->
                                 <div class="overflow-full" style="background-color: rgba(0,0,0,0.5)" x-show="isDialogOpen" :class="{ 'absolute inset-0 z-10 flex items-start justify-center': isDialogOpen }">
                                     <!-- dialog -->
@@ -50,7 +50,7 @@
                                                     <form class="mr-3" id="formDelete" action="{{ route('files.destroy', $file->id) }}" data-action="{{ route('files.destroy', $file->id) }}" method="POST">
                                                         @method('DELETE')
                                                         @csrf
-                                                        <button type="submit">Eliminar <img src="{{asset('images/recycle-bin.png')}}" alt="deletelogo"  style="float: left; margin: 0px 0px 15px 5px;" ></button>
+                                                        <button type="submit">Eliminar&nbsp;&nbsp;<i class="fas fa-trash-alt" style="color: red"></i></button>
                                                     </form>
                                                 </div>
                                             </ul>

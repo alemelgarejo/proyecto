@@ -436,7 +436,7 @@
             <small class="text-danger">{{ $message }}</small>
         @enderror
     </div>
-        <button type="submit" class="btn btn-primary btn-sm" style="color: white;">Actualizar <i class="fas fa-edit"></i></button>
-    </form>
+    <button type="submit" class="btn btn-secondary btn-sm">Editar&nbsp;&nbsp;<i class="fas fa-edit"></i></button>
+</form>
     <br><br>
 </x-app-layout>

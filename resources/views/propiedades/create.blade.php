@@ -22,7 +22,7 @@
             <label for="propietario_id" class="form-label">Propietario</label>
             <select class="form-control" placeholder="Propietario"  name="propietario_id" id="propietario_id">
                 @foreach ($propietarios as $name => $id)
-                    <option {{ $propiedade->propietario_id == $id ? 'selected="selected"' : '' }} value="{{ $id }}">
+                    <option {{ $propiedade->propietario_id == $id ? 'selected' : '' }} value="{{ $id }}">
                         {{ $name }}</option>
                 @endforeach
             </select>
@@ -133,7 +133,7 @@
                 <small class="text-danger">{{ $message }}</small>
             @enderror
         </div>
-        <button type="submit" class="" style="color:black;"><img src="{{asset('images/sav.png')}}"  alt="deletelogo"  style="float: left;" >&nbsp;&nbsp;</button>
+        <button type="submit" class="btn btn-secondary btn-sm">Crear&nbsp;&nbsp;<i class="fas fa-plus-circle"></i></button>
     </form>
     <br><br>
 </x-app-layout>

@@ -13,7 +13,7 @@
         </div>
     @endif
     <br>
-    <a class="" style="color: black; float: left; margin-left: 20%;" href="{{ route('files.index2', $propiedade->id) }}"><img src="{{asset('images/image.png')}}" alt="editlogo"  style="float: left; margin: 0px 0px 0px 10px;width:50%;" ></a>
+    <a class="btn btn-secondary btn-sm ml-80 mt-3" data-toggle="tooltip" data-placement="top" title="Ver imágenes" href="{{ route('files.index2', $propiedade->id) }}"><i class="fas fa-images"></i></a>&nbsp;&nbsp;
 
     <div class="object-center">
           <div class="mt-5 md:mt-0 md:col-span-2" style="width: 60%; margin-left: 20%;">

@@ -9,7 +9,7 @@ class Propiedade extends Model
 {
     use HasFactory;
     protected $table = 'propiedades';
-    protected  $primaryKey = 'id';
+    //protected  $primaryKey = 'id';
     protected $guarded = [];
 
     public function propietario() {

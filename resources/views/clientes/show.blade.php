@@ -43,47 +43,44 @@
                       <h6 class="mb-0">Gestión</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                        <a class="" style="float: left; color: black;"
-                        href="{{ route('clientes.edit', $cliente->id) }}"><img src="{{asset('images/consent.png')}}" alt="editlogo"  style="float: left; margin: 0px 0px 0px 10px;" > </a>&nbsp;&nbsp;
-						<a class="" style="float: left; color: black;" href="{{ route('ordenes.create') }}"><img src="{{asset('images/checklist.png')}}" alt="editlogo"  style="float: left; margin: 0px 0px -10px 10px; width:70%;" > </a>&nbsp;&nbsp;
+                        <a data-toggle="tooltip" data-placement="top" title="Editar" href="{{ route('clientes.edit', $cliente->id) }}" style="color: gray;"><i class="fas fa-edit"></i></a>&nbsp;
+                        <a data-toggle="tooltip" data-placement="top" title="Crear Órden" href="{{ route('ordenes.create', $cliente->id) }}" style="color: gray"><i class="fas fa-folder-plus"></i></a>&nbsp;&nbsp;
+                        <!-- Button trigger modal -->
+                        <button type="button" data-toggle="modal" data-target="#exampleModal" data-toggle="tooltip" data-placement="top" title="Eliminar" href="" style="color: gray">
+                            <i class="fas fa-trash-alt" style="color: red"></i>
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <form action="{{ route('clientes.destroy', $cliente->id) }}" method="POST" class="remove-record-model">
+                                    {{ method_field('delete') }}
+                                    {{ csrf_field() }}
 
-                        <main x-data="{ 'isDialogOpen': false }" @keydown.escape="isDialogOpen = false"  style="float: left; color: black;">
-                            <section>
-                                <button type="button" @click="isDialogOpen = true"><img src="{{asset('images/recycle-bin.png')}}" alt="deletelogo" style="float: left; margin: 0px 0px 0px 5px; color: black;" > &nbsp;&nbsp;</button>
-                                <!-- overlay -->
-                                <div class="overflow-full" style="background-color: rgba(0,0,0,0.5)" x-show="isDialogOpen" :class="{ 'absolute inset-0 z-10 flex items-start justify-center': isDialogOpen }">
-                                    <!-- dialog -->
-                                    <div class="bg-white shadow-2xl m-4 sm:m-8" x-show="isDialogOpen" @click.away="isDialogOpen = false">
-                                        <div class="flex justify-between items-center border-b p-2 text-xl">
-                                            <h6 class="text-xl font-bold">Cliente: {{$cliente->name}}, {{$cliente->surname}}</h6>
-                                            <button type="button" @click="isDialogOpen = false">✖</button>
-                                        </div>
-                                        <div class="p-2">
-                                            <!-- content -->
-                                            <h4 class="font-bold">¿Desea eliminar éste cliente?</h4>
-                                            <aside class="max-w-lg mt-4 p-4 bg-yellow-100 border border-yellow-500">
-                                                <p> - Nombre: {{$cliente->name}}, <br>
-                                                    - Apellidos: {{$cliente->surname}}, <br>
-                                                    - Email: {{$cliente->email}}, <br>
-                                                    - DNI: {{$cliente->dni}}, <br>
-                                                    - Estado: {{$cliente->estado}}, <br>
-                                                </p>
-                                                <p>⚠ Asegurate de haber seleccionado los datos correctos.</p>
-                                            </aside>
-                                            <ul class="bg-gray-100 border m-8 px-4">
-                                                <div class="modal-footer">
-                                                    <form id="formDelete" action="{{ route('clientes.destroy', $cliente->id) }}" data-action="{{ route('clientes.destroy',  $cliente->id) }}" method="POST">
-                                                        @method('DELETE')
-                                                        @csrf
-                                                        <button type="submit">Eliminar <img src="{{asset('images/recycle-bin.png')}}" alt="deletelogo"  style="float: left; margin: 0px 0px 15px 5px;" ></button>
-                                                    </form>
-                                                </div>
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Eliminar Cliente: {{$cliente->name}} {{$cliente->surname}}</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>
+                                            ¿Seguro que desea eliminar éste cliente?
+                                            <ul>
+                                                <li>- {{$cliente->name}} {{$cliente->surname}}</li>
+                                                <li>- {{$cliente->telefono}}</li>
+                                                <li>- {{$cliente->email}}</li>
                                             </ul>
-                                        </div>
-                                    </div><!-- /dialog -->
-                                </div><!-- /overlay -->
-                            </section>
-                        </main>
+                                        </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                    </div>
+                                </form>
+                            </div>
+                            </div>
+                        </div>
+
                     </div>
                   </div>
                   <hr>
@@ -199,12 +196,19 @@
                   </div>
                 </div>
                 <hr>
-                <a class="" style=""
-                        href="{{ route('clientes.index') }}"><img src="{{asset('images/previous.png')}}"  alt="deletelogo"  style="float: left; color: black;" > </a>
+                <a class="btn btn-secondary btn-sm" style=""
+                        href="{{ route('clientes.index') }}">Volver&nbsp;&nbsp;<i class="fas fa-undo-alt"></i></a>
               </div>
             </div>
             </div>
           </div>
         </div>
       </div>
+
+
+      <script>
+          $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+        })
+      </script>
 </x-app-layout>

@@ -42,10 +42,42 @@
                       <h6 class="mb-0">Gestión</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                        <a class="btn btn-warning btn-sm mt-1" style="color: white;"
-                        href="{{ route('ordenes.edit', $ordene->id) }}"><i class="fas fa-edit"></i> Actualizar</a>
+                        <a data-toggle="tooltip" data-placement="top" title="Editar" href="{{ route('ordenes.edit', $ordene->id) }}" style="color: gray;"><i class="fas fa-edit"></i></a>&nbsp;&nbsp;
+                        <!-- Button trigger modal -->
+                        <button type="button" data-toggle="modal" data-target="#exampleModal" data-toggle="tooltip" data-placement="top" title="Eliminar" href="" style="color: gray">
+                            <i class="fas fa-trash-alt" style="color: red"></i>
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <form action="{{ route('ordenes.destroy', $ordene->id) }}" method="POST" class="remove-record-model">
+                                    {{ method_field('delete') }}
+                                    {{ csrf_field() }}
 
-                        <button class="btn btn-danger btn-sm mt-1" onclick="document.getElementById('id01').style.display='block'"><i class="fas fa-trash-alt"></i> Eliminar</button>
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Eliminar örden: {{$ordene->cliente->name}} {{$ordene->ciudad}}</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>
+                                            ¿Seguro que desea eliminar éste cliente?
+                                            <ul>
+                                                <li>- {{$ordene->cliente->name}}</li>
+                                                <li>- {{$ordene->ciudad}}</li>
+                                                <li>- {{$ordene->tipo}}</li>
+                                            </ul>
+                                        </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                    </div>
+                                </form>
+                            </div>
+                            </div>
+                        </div>
                     </div>
                   </div>
                   <hr>
